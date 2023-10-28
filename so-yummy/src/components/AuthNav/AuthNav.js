@@ -16,16 +16,12 @@ export const AuthNav = () => {
 					retrieve your own recipes at any time.
 				</p>
 				<div className="buttonsWrapper">
-					<button className="buttonGreen">
-						<NavLink className="link" to="/register">
-							Register
-						</NavLink>
-					</button>
-					<button className="buttonTransparent">
-						<NavLink className="link" to="/login">
-							Log In
-						</NavLink>
-					</button>
+					<NavLink to="/register">
+						<button className="buttonGreen">Register</button>
+					</NavLink>
+					<NavLink to="/login">
+						<button className="buttonTransparent">Sign In</button>
+					</NavLink>
 				</div>
 			</div>
 		</div>

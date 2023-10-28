@@ -41,6 +41,7 @@
 	background-color: #8baa36;
 	font-size: 20px;
 	cursor: pointer;
+	color: white;
 }
 
 .buttonTransparent {
@@ -50,9 +51,5 @@
 	background-color: transparent;
 	font-size: 20px;
 	cursor: pointer;
-}
-
-.link {
-	text-decoration: none;
 	color: white;
 }
