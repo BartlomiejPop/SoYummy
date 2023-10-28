@@ -38,6 +38,7 @@ export const App = () => {
 				/>
 				<Route
 					path="/login"
+					element={<LoginPage />}
 					// element={
 					// 	<RestrictedRoute redirectTo="/recipes" component={<LoginPage />} />
 					// }
