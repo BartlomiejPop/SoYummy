@@ -7,7 +7,7 @@ import { RestrictedRoute } from "./RestrictedRoute";
 import { refreshUser } from "../redux/auth/operations";
 import { useDispatch } from "react-redux";
 
-// const HomePage = lazy(() => import("../pages/Home"));
+const HomePage = lazy(() => import("../pages/Home"));
 const RegisterPage = lazy(() => import("../pages/Register"));
 const LoginPage = lazy(() => import("../pages/Login"));
 // const RecipesPage = lazy(() => import("../pages/Recipes"));
@@ -25,21 +25,22 @@ export const App = () => {
 	) : (
 		<Routes>
 			<Route path="/" element={<Layout />}>
-				{/* <Route index element={<HomePage />} /> */}
+				<Route index element={<HomePage />} />
 				<Route
 					path="/register"
-					element={
-						<RestrictedRoute
-							redirectTo="/recipes"
-							component={<RegisterPage />}
-						/>
-					}
+					element={<RegisterPage />}
+					// element={
+					// 	<RestrictedRoute
+					// 		redirectTo="/recipes"
+					// 		component={<RegisterPage />}
+					// 	/>
+					// }
 				/>
 				<Route
 					path="/login"
-					element={
-						<RestrictedRoute redirectTo="/recipes" component={<LoginPage />} />
-					}
+					// element={
+					// 	<RestrictedRoute redirectTo="/recipes" component={<LoginPage />} />
+					// }
 				/>
 				{/* <Route
 					path="/recipes"
@@ -51,3 +52,5 @@ export const App = () => {
 		</Routes>
 	);
 };
+
+export default App;
