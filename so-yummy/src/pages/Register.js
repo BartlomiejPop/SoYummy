@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet";
 // import { RegisterForm } from "components/RegisterForm/RegisterForm";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import image from "../images/registerImage.png";
 import bg from "../images/registerBg.png";
 import "./register.css";
@@ -7,34 +9,99 @@ import userIcon from "../icons/user.svg";
 import emailIcon from "../icons/email.svg";
 import passwordIcon from "../icons/password.svg";
 import { NavLink } from "react-router-dom";
+// import { setUsername } from "../redux/auth/slice.js";
+import { register } from "../redux/auth/operations.js";
+import Notiflix from "notiflix";
+
+const BASE_URL = "http://localhost:3000";
 
 export default function Register() {
+	const dispatch = useDispatch();
+	const navigate = useNavigate();
+
+	const validateEmail = (email) => {
+		const regex = /\S+@\S+\.\S+/;
+		return regex.test(email);
+	};
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+		const form = e.currentTarget;
+		const email = form.elements.email.value;
+		const password = form.elements.password.value;
+		const name = form.elements.name.value;
+
+		if (!validateEmail(email)) {
+			Notiflix.Notify.failure("Invalid email format!");
+			return;
+		}
+
+		try {
+			const response = await fetch(`${BASE_URL}/register`, {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ email, password, name }),
+			});
+			if (response.ok) {
+				localStorage.setItem("accessToken", response.token);
+				localStorage.setItem("Name", name);
+				form.reset();
+				Notiflix.Notify.success("Registration successful");
+				navigate("/recipes");
+			} else {
+				Notiflix.Notify.failure("User already exists");
+			}
+		} catch (error) {
+			Notiflix.Notify.failure("Registration failed. Please try again.");
+		}
+	};
+
 	return (
 		<div>
 			<Helmet>
 				<title>Registration</title>
 			</Helmet>
-			<img className="bg" src={bg} />
+			<img alt="bg" className="bg" src={bg} />
 			<div className="wrapper">
-				<img className="image" src={image} />
+				<img alt="logo" className="image" src={image} />
 				<div className="contentWrapper">
 					<div className="formWrapper">
 						<p className="formText">Registration</p>
-						<div className="form">
+						<form onSubmit={handleSubmit} className="form">
 							<div className="field">
-								<img src={userIcon} className="icon" />
-								<input className="input" placeholder="Name" type="text" />
+								<img alt="userIcon" src={userIcon} className="icon" />
+								<input
+									className="input"
+									placeholder="Name"
+									type="text"
+									name="name"
+									required=""
+								/>
 							</div>
 							<div className="field">
-								<img src={emailIcon} className="icon" />
-								<input className="input" placeholder="Email" type="text" />
+								<img alt="emailIcon" src={emailIcon} className="icon" />
+								<input
+									className="input"
+									placeholder="Email"
+									type="text"
+									name="email"
+									required=""
+								/>
 							</div>
 							<div className="field">
-								<img src={passwordIcon} className="icon" />
-								<input className="input" placeholder="Password" type="text" />
+								<img alt="passwordIcon" src={passwordIcon} className="icon" />
+								<input
+									className="input"
+									placeholder="Password"
+									type="text"
+									name="password"
+									required=""
+								/>
 							</div>
 							<button className="button">Sign up</button>
-						</div>
+						</form>
 					</div>
 					<NavLink className="navLink" to="/login">
 						Sign in

@@ -6,9 +6,9 @@ import culteryIcon from "../../icons/cultery.svg";
 export const AuthNav = () => {
 	return (
 		<div className="authNavWrapper">
-			<img className="background" src={background} />
+			<img alt="bg" className="background" src={background} />
 			<div className="contentWrapper">
-				<img src={culteryIcon} />
+				<img alt="culteryIcon" src={culteryIcon} />
 				<h2>Welcome to the app!</h2>
 				<p className="appDescription">
 					This app offers more than just a collection of recipes - it is
