@@ -1,12 +1,12 @@
 import Header from "../components/Header/Header.jsx";
 import Introduction from "../components/Introduction/Introduction.jsx";
-import HomePageBreakfast from "../components/HomePageBreakfast/HomePageBreakfast.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import "./HomePage.css";
 import greenBg from "../images/greenBg.png";
 import leaves from "../images/leaves.png";
 import leaves2 from "../images/leaves2.png";
 import salad from "../images/salad.png";
+import HomePageRecipes from "../components/HomePageRecipes/HomePageRecipes.jsx";
 
 export default function Home() {
 	return (
@@ -18,7 +18,7 @@ export default function Home() {
 			<img src={greenBg} className="greenBg" />
 			<Header />
 			<Introduction />
-			<HomePageBreakfast />
+			<HomePageRecipes />
 			<Footer />
 		</div>
 	);

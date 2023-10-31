@@ -38,6 +38,11 @@
 	border: 1px solid grey;
 }
 
+.searchFieldInput:focus {
+	outline: none;
+	border: 2px solid #8baa36;
+}
+
 .searchFieldButton {
 	right: 0;
 	top: 0;

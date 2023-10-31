@@ -1,13 +1,13 @@
 import arrowRight from "../../icons/arrow-right.svg";
 import { useSelector } from "react-redux";
-import { selectBreakfast } from "../../redux/recipes/selectors.js";
+import { selectMiscellaneous } from "../../redux/recipes/selectors.js";
 
-export const HomePageBreakfast = () => {
-	const recipes = useSelector(selectBreakfast);
+export const HomePageMiscellaneous = () => {
+	const recipes = useSelector(selectMiscellaneous);
 
 	return (
 		<div className="HomePageRecipes">
-			<h2 className="HomePageRecipesTitle">Breakfast</h2>
+			<h2 className="HomePageRecipesTitle">Miscellaneous</h2>
 			<ul className="HomeRecipesList">
 				{recipes.map((el, index) => (
 					<li className="HomeRecipesListItem" key={index}>
@@ -23,4 +23,4 @@ export const HomePageBreakfast = () => {
 	);
 };
 
-export default HomePageBreakfast;
+export default HomePageMiscellaneous;
