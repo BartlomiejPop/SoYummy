@@ -1,15 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import React, { lazy, useEffect } from "react";
-import { useAuth } from "../hooks/useAuth";
+import { useAuth } from "../hooks/useAuth.js";
 import { Layout } from "./Layout";
-// import { PrivateRoute } from "./PrivateRoute";
-// import { RestrictedRoute } from "./RestrictedRoute";
-// import { refreshUser } from "../redux/auth/operations";
+import { PrivateRoute } from "./PrivateRoute.js";
+import { RestrictedRoute } from "./RestrictedRoute.js";
+import { refreshUser } from "../redux/auth/operations";
 import { useDispatch } from "react-redux";
 
-const HomePage = lazy(() => import("../pages/Home"));
+const WelcomePage = lazy(() => import("../pages/WelcomePage"));
 const RegisterPage = lazy(() => import("../pages/Register"));
 const LoginPage = lazy(() => import("../pages/Login"));
+const HomePage = lazy(() => import("../pages/HomePage"));
 // const RecipesPage = lazy(() => import("../pages/Recipes"));
 
 export const App = () => {
@@ -25,30 +26,26 @@ export const App = () => {
 	) : (
 		<Routes>
 			<Route path="/" element={<Layout />}>
-				<Route index element={<HomePage />} />
+				<Route index element={<WelcomePage />} />
+
 				<Route
 					path="/register"
 					element={<RegisterPage />}
 					// element={
-					// 	<RestrictedRoute
-					// 		redirectTo="/recipes"
-					// 		component={<RegisterPage />}
-					// 	/>
+					// 	<RestrictedRoute redirectTo="/login" component={<RegisterPage />} />
 					// }
 				/>
 				<Route
 					path="/login"
-					element={<LoginPage />}
-					// element={
-					// 	<RestrictedRoute redirectTo="/recipes" component={<LoginPage />} />
-					// }
-				/>
-				{/* <Route
-					path="/recipes"
+					// element={<LoginPage />}
 					element={
-						<PrivateRoute redirectTo="/login" component={<RecipesPage />} />
+						<RestrictedRoute redirectTo="/home" component={<LoginPage />} />
 					}
-				/> */}
+				/>
+				<Route
+					path="/home"
+					element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
+				/>
 			</Route>
 		</Routes>
 	);

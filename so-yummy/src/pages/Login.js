@@ -6,15 +6,18 @@ import Notiflix from "notiflix";
 // import { RegisterForm } from "components/RegisterForm/RegisterForm";
 import image from "../images/registerImage.png";
 import bg from "../images/registerBg.png";
-import "./register.css";
+import "./loginRegister.css";
 import emailIcon from "../icons/email.svg";
 import passwordIcon from "../icons/password.svg";
 import { NavLink } from "react-router-dom";
-import { loginUser } from "../redux/auth/slice.js";
-import User from "../schemas/user.js";
+import { loginUser, loginUserError } from "../redux/auth/slice.js";
+// import { authApi } from "../../api/auth.services";
+import { authApi } from "../routes/api/services.js";
+// import User from "../schemas/user.js";
+// import jwt from "jsonwebtoken";
+// const secret = "secret";
+import { setUsername } from "../redux/auth/slice.js";
 const BASE_URL = "http://localhost:3000";
-
-// import { setUsername } from "../redux/auth/slice.js";
 
 export default function Login() {
 	const dispatch = useDispatch();
@@ -30,6 +33,9 @@ export default function Login() {
 		const password = form.elements.password.value;
 		const email = form.elements.email.value;
 		try {
+			// const { token, name } = await authApi.loginUser(formData);
+			// dispatch(setUsername(name));
+
 			const response = await fetch(`${BASE_URL}/login`, {
 				method: "POST",
 				headers: {
@@ -37,14 +43,19 @@ export default function Login() {
 				},
 				body: JSON.stringify({ password, email }),
 			});
+			const responseData = await response.json();
+			const token = responseData.data.token;
+			const name = responseData.data.user.name;
 			if (response.ok) {
+				dispatch(loginUser({ email, token, name }));
 				Notiflix.Notify.success("Logged in successfully");
-				navigate("/recipes");
+				navigate("/home");
 			} else {
 				Notiflix.Notify.failure("Wrong email or password");
 			}
 		} catch (error) {
 			console.error(error);
+			dispatch(loginUserError());
 			if (error.response && error.response.status === 401) {
 				Notiflix.Notify.failure("Login error. Email or password is incorrect!");
 			} else {

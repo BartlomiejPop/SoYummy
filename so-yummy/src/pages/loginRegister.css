@@ -23,6 +23,7 @@
 }
 
 .form {
+	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-evenly;
@@ -74,6 +75,8 @@
 }
 
 .navLink {
+	display: flex;
+	margin-left: 40px;
 	margin-top: 20px;
 	color: white;
 }

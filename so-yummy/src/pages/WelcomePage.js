@@ -1,6 +1,6 @@
 import { AuthNav } from "../components/AuthNav/AuthNav.js";
 
-export default function home() {
+export default function Welcome() {
 	return (
 		<div>
 			<AuthNav />

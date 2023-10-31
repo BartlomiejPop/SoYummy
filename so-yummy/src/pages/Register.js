@@ -4,13 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import image from "../images/registerImage.png";
 import bg from "../images/registerBg.png";
-import "./register.css";
+import "./loginRegister.css";
 import userIcon from "../icons/user.svg";
 import emailIcon from "../icons/email.svg";
 import passwordIcon from "../icons/password.svg";
 import { NavLink } from "react-router-dom";
 // import { setUsername } from "../redux/auth/slice.js";
-import { register } from "../redux/auth/operations.js";
+// import { register } from "../redux/auth/operations.js";
 import Notiflix from "notiflix";
 
 const BASE_URL = "http://localhost:3000";
@@ -49,7 +49,7 @@ export default function Register() {
 				localStorage.setItem("Name", name);
 				form.reset();
 				Notiflix.Notify.success("Registration successful");
-				navigate("/recipes");
+				navigate("/login");
 			} else {
 				Notiflix.Notify.failure("User already exists");
 			}
