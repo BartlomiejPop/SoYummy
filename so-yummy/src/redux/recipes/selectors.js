@@ -7,3 +7,5 @@ export const selectMiscellaneous = (state) =>
 export const selectChicken = (state) => state.recipes.initialRecipes.chicken;
 
 export const selectDesserts = (state) => state.recipes.initialRecipes.desserts;
+
+export const selectCategory = (state) => state.recipes.initialRecipes;

@@ -7,6 +7,7 @@ import leaves from "../images/leaves.png";
 import leaves2 from "../images/leaves2.png";
 import salad from "../images/salad.png";
 import HomePageRecipes from "../components/HomePageRecipes/HomePageRecipes.jsx";
+import OtherCategories from "../components/OtherCategories/OtherCategories.jsx";
 
 export default function Home() {
 	return (
@@ -19,6 +20,7 @@ export default function Home() {
 			<Header />
 			<Introduction />
 			<HomePageRecipes />
+			<OtherCategories />
 			<Footer />
 		</div>
 	);

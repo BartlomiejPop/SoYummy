@@ -1,0 +1,16 @@
+.categoriesNavigation {
+	padding: 50px 80px;
+}
+
+.categoriesNavigationlist {
+	display: flex;
+	justify-content: space-evenly;
+	list-style: none;
+}
+
+.categoriesNavigationItem {
+	font-size: 18px;
+	font-weight: 600;
+	color: #bdbdbd;
+	cursor: pointer;
+}

@@ -1,14 +1,14 @@
 import { Helmet } from "react-helmet";
-import { RegisterForm } from "components/RegisterForm/RegisterForm";
+import Recipes from "../pages/Recipes.js";
 
 export default function Register() {
 	return (
 		<div>
 			<Helmet>
-				<title>Registration</title>
+				<title>Recipes</title>
 			</Helmet>
 
-			<RegisterForm />
+			<Recipes />
 		</div>
 	);
 }

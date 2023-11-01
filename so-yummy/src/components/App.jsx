@@ -11,6 +11,7 @@ const WelcomePage = lazy(() => import("../pages/WelcomePage"));
 const RegisterPage = lazy(() => import("../pages/Register"));
 const LoginPage = lazy(() => import("../pages/Login"));
 const HomePage = lazy(() => import("../pages/HomePage"));
+const CategoriesPage = lazy(() => import("../pages/Categories.js"));
 // const RecipesPage = lazy(() => import("../pages/Recipes"));
 
 export const App = () => {
@@ -28,16 +29,9 @@ export const App = () => {
 			<Route path="/" element={<Layout />}>
 				<Route index element={<WelcomePage />} />
 
-				<Route
-					path="/register"
-					element={<RegisterPage />}
-					// element={
-					// 	<RestrictedRoute redirectTo="/login" component={<RegisterPage />} />
-					// }
-				/>
+				<Route path="/register" element={<RegisterPage />} />
 				<Route
 					path="/login"
-					// element={<LoginPage />}
 					element={
 						<RestrictedRoute redirectTo="/home" component={<LoginPage />} />
 					}
@@ -45,6 +39,12 @@ export const App = () => {
 				<Route
 					path="/home"
 					element={<PrivateRoute redirectTo="/" component={<HomePage />} />}
+				/>
+				<Route
+					path="/categories"
+					element={
+						<PrivateRoute redirectTo="/" component={<CategoriesPage />} />
+					}
 				/>
 			</Route>
 		</Routes>
