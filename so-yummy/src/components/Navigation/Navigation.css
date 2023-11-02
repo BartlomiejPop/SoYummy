@@ -10,4 +10,10 @@
 .navigationItem {
 	font-size: 20px;
 	cursor: pointer;
+	text-decoration: none;
+}
+
+a {
+	text-decoration: none;
+	color: black;
 }

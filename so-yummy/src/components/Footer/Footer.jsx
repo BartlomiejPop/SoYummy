@@ -4,12 +4,19 @@ import "./Footer.css";
 import logo from "../../icons/cultery.svg";
 
 export const Footer = () => {
+	const navigate = useNavigate();
 	return (
 		<div className="footer">
 			<div className="footerBoxesWrapper">
 				<div className="footerDescriptionBox">
 					<div className="footerLogoField">
-						<img src={logo} />
+						<img
+							className="footerLogo"
+							src={logo}
+							onClick={() => {
+								navigate("/home");
+							}}
+						/>
 						<p className="footerTitle">So Yummy</p>
 					</div>
 					<ul className="footerDescriptionList">

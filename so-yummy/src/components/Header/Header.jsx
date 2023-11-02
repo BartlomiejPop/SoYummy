@@ -15,7 +15,7 @@ export const Header = () => {
 				src={logo}
 				className="logo"
 				onClick={() => {
-					navigate("/");
+					navigate("/home");
 				}}
 			/>
 			<Navigation />

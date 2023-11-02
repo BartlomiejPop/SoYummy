@@ -12,11 +12,11 @@ export const CategoriesResults = () => {
 	const recipes = categories && categories[recipesCategory];
 	return (
 		<div className="CategoriesResults">
-			<span className="CategoriesResultslist">{recipesCategory}</span>
-			<ul>
+			<span className="CategoriesResultTitle">{recipesCategory}</span>
+			<ul className="CategoriesResultList">
 				{recipes &&
 					recipes.map((el, index) => (
-						<li key={index}>
+						<li className="CategoriesResultItem" key={index}>
 							<img src={el.picture} alt={el.name} />
 						</li>
 					))}

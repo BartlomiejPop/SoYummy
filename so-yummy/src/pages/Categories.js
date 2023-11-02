@@ -6,8 +6,9 @@ import CategoriesNavigation from "../components/CategoriesNavigation/CategoriesN
 import CategoriesResults from "../components/CategoriesResults/CategoriesResults.jsx";
 
 export default function Register() {
+	window.scrollTo(0, 0);
 	return (
-		<div>
+		<div className="categoriesBackground">
 			<Helmet>
 				<title>Categories</title>
 			</Helmet>

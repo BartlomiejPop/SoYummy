@@ -82,6 +82,10 @@
 	cursor: pointer;
 }
 
+.footerLogo {
+	cursor: pointer;
+}
+
 .emailIcon {
 	left: 15px;
 	position: absolute;
