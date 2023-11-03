@@ -24,4 +24,8 @@ const getMyRecipes = async () => {
 	return Recipe.find();
 };
 
-export default { createRecipe, getMyRecipes };
+const removeRecipe = (id) => {
+	return Recipe.findByIdAndRemove({ _id: id });
+};
+
+export default { createRecipe, getMyRecipes, removeRecipe };

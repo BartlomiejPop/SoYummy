@@ -1,27 +1,13 @@
-// const app = require("./app");
-// const mongoose = require("mongoose");
-// import { app } from "./app";
-// import { mongoose } from "./mongoose";
-
-// const express = require("express");
 import express from "express";
-// import { logger } from "logger";
 import cors from "cors";
 import mongoose from "mongoose";
-// const logger = require("morgan");
 import logger from "morgan";
-// const cors = require("cors");
-// const mongoose = require("mongoose");
-// const passport = require("./config/config-passport");
-// const contactsRouter = require("./routes/api/contacts");
-// const authRouter = require("./routes/api/auth.js");
 import authRouter from "./routes/api/auth.js";
 import recipesRouter from "./routes/api/recipes.js";
-
-// const User = require("./schemas/user");
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(logger(formatsLogger));
@@ -39,7 +25,6 @@ app.use((_, res, next) => {
 app.use((err, _, res) => {
 	res.status(500).json({ message: err.message });
 });
-// const uriDb = process.env.DB_HOST;
 
 try {
 	await mongoose.connect(
@@ -53,12 +38,10 @@ try {
 	console.log("Database connection successful");
 
 	app.listen(3000, () => {
-		console.log("Server running. Use our API on port: 3000");
+		console.log(`Server running. Use our API on port: 3000`);
 	});
 } catch (error) {
 	console.error("Cannot connect to Mongo Database");
 	console.error(error);
 	process.exit(1);
 }
-
-// export default upload;

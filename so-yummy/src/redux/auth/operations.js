@@ -1,10 +1,17 @@
 // import { registerUser } from "./slice.js";
 // import { setUsername } from "./slice.js";
 // const { registerUser } = require("./slice.mjs");
-
+// import dotenv from "dotenv";
 import { Navigate } from "react-router";
+// import dotenv from "dotenv";
+// dotenv.config();
 
-const BASE_URL = "http://localhost:3000";
+// import dotenv from "dotenv";
+// dotenv.config();
+
+// const port = process.env.PORT || 3000;
+
+const BASE_URL = `http://localhost:3000`;
 
 export const register = (userData) => async () => {
 	try {
@@ -15,31 +22,19 @@ export const register = (userData) => async () => {
 			},
 			body: JSON.stringify(userData),
 		});
-		// if (response.ok) {
-		// 	return true;
-		// } else {
-		// 	return false;
-		// }
 	} catch (error) {
-		// console.error("Signup error:", error);
 		return false;
 	}
 };
 
 export const login = (userData) => async (dispatch) => {
 	try {
-		// dispatch(setUsername(userData));
-
-		await fetch(`${BASE_URL}/login`, {
+		await fetch(`http://localhost:3000/login`, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify(userData),
 		});
-		// return response;
-	} catch (error) {
-		// console.error("Login error:", error);
-		// return false;
-	}
+	} catch (error) {}
 };

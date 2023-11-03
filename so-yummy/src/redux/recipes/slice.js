@@ -1,6 +1,6 @@
 // import pkg from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import { addRecipe } from "./operations.js";
+import { addRecipe, getMyRecipes, deleteRecipe } from "./operations.js";
 
 //BREAKFAST
 import bananaPancakes from "../../images/bananaPancakes.png";
@@ -125,7 +125,11 @@ const initialState = {
 const recipesSlice = createSlice({
 	name: "recipes",
 	initialState,
-	reducers: {},
+	reducers: {
+		fetchMyRecipes: (state, action) => {
+			state.myRecipes = action.payload;
+		},
+	},
 	extraReducers: {
 		// [addRecipe.pending]: handlePending,
 		[addRecipe.fulfilled](state, action) {
@@ -136,8 +140,16 @@ const recipesSlice = createSlice({
 			// 	state.filter.push(action.payload);
 			// }
 		},
+		[getMyRecipes.fulfilled](state, action) {
+			state.myRecipes = action.payload;
+		},
+		[deleteRecipe.fulfilled](state, action) {
+			const recipeId = action.payload.data._id;
+			state.myRecipes = state.myRecipes.filter((el) => el._id !== recipeId);
+		},
 		// [addRecipe.rejected]: handleRejected,
 	},
 });
 
+export const { fetchMyRecipes } = recipesSlice.actions;
 export const recipesReducer = recipesSlice.reducer;

@@ -18,7 +18,7 @@ export const create = async (req, res, next) => {
 		res.status(201).json({
 			status: "success",
 			code: 201,
-			data: { recipe: result },
+			data: result,
 		});
 	} catch (e) {
 		console.error(e);
@@ -28,13 +28,11 @@ export const create = async (req, res, next) => {
 
 export const get = async (req, res, next) => {
 	try {
-		const results = await recipes.getMyRecipes();
+		const myRecipes = await recipes.getMyRecipes();
 		res.json({
 			status: "success",
 			code: 200,
-			data: {
-				contacts: results,
-			},
+			data: myRecipes,
 		});
 	} catch (e) {
 		console.error(e);
@@ -42,4 +40,29 @@ export const get = async (req, res, next) => {
 	}
 };
 
-export default { create, get };
+export const remove = async (req, res, next) => {
+	const { id } = req.params;
+
+	try {
+		const result = await recipes.removeRecipe(id);
+		if (result) {
+			res.json({
+				status: "success",
+				code: 200,
+				data: result,
+			});
+		} else {
+			res.status(404).json({
+				status: "error",
+				code: 404,
+				message: `Not found recipe id: ${id}`,
+				data: "Not Found",
+			});
+		}
+	} catch (e) {
+		console.error(e);
+		next(e);
+	}
+};
+
+export default { create, get, remove };
