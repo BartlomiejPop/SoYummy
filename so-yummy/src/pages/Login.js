@@ -33,9 +33,6 @@ export default function Login() {
 		const password = form.elements.password.value;
 		const email = form.elements.email.value;
 		try {
-			// const { token, name } = await authApi.loginUser(formData);
-			// dispatch(setUsername(name));
-
 			const response = await fetch(`${BASE_URL}/login`, {
 				method: "POST",
 				headers: {

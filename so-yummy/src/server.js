@@ -16,6 +16,8 @@ import logger from "morgan";
 // const contactsRouter = require("./routes/api/contacts");
 // const authRouter = require("./routes/api/auth.js");
 import authRouter from "./routes/api/auth.js";
+import recipesRouter from "./routes/api/recipes.js";
+
 // const User = require("./schemas/user");
 
 const app = express();
@@ -26,6 +28,7 @@ app.use(logger(formatsLogger));
 app.use(cors());
 app.use(express.json());
 app.use("/", authRouter);
+app.use("/", recipesRouter);
 
 app.use((_, res, next) => {
 	const err = new Error("Not Found");
@@ -57,3 +60,5 @@ try {
 	console.error(error);
 	process.exit(1);
 }
+
+// export default upload;

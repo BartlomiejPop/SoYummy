@@ -1,12 +1,10 @@
 import "./Navigation.css";
 import { useNavigate } from "react-router";
 import { useParams } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 export const Navigation = () => {
 	const navigate = useNavigate();
-	const tab = useParams();
 
 	return (
 		<ul className="navigationList">

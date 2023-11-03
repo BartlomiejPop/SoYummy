@@ -1,9 +1,9 @@
-module.exports = {
+export default {
 	entry: "./src/index.js",
 	resolve: {
 		fallback: {
 			os: require.resolve("os-browserify/browser"),
-			crypto: false,
+			crypto: require.resolve("crypto-browserify"),
 			jwa: require.resolve("jwa"),
 		},
 	},

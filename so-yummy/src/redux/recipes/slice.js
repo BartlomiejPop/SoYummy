@@ -1,5 +1,6 @@
 // import pkg from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
+import { addRecipe } from "./operations.js";
 
 //BREAKFAST
 import bananaPancakes from "../../images/bananaPancakes.png";
@@ -108,13 +109,35 @@ const initialState = {
 		seafood: [{ name: "Sushi", picture: sushi }],
 		pasta: [{ name: "Squash linguine", picture: squashLinguine }],
 	},
+	myRecipes: [],
+	favoriteRecipes: [],
 };
+
+// const handlePending = (state) => {
+// 	state.isLoading = true;
+// };
+
+// const handleRejected = (state, action) => {
+// 	state.isLoading = false;
+// 	state.error = action.payload;
+// };
 
 const recipesSlice = createSlice({
 	name: "recipes",
 	initialState,
 	reducers: {},
-	extraReducers: {},
+	extraReducers: {
+		// [addRecipe.pending]: handlePending,
+		[addRecipe.fulfilled](state, action) {
+			state.myRecipes.push(action.payload);
+			// state.isLoading = false;
+			// state.error = null;
+			// if (state.filter !== "") {
+			// 	state.filter.push(action.payload);
+			// }
+		},
+		// [addRecipe.rejected]: handleRejected,
+	},
 });
 
 export const recipesReducer = recipesSlice.reducer;

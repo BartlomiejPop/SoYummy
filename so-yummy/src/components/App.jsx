@@ -13,6 +13,7 @@ const LoginPage = lazy(() => import("../pages/Login"));
 const HomePage = lazy(() => import("../pages/HomePage"));
 const CategoriesPage = lazy(() => import("../pages/Categories.js"));
 const AddRecipesPage = lazy(() => import("../pages/AddRecipesPage.js"));
+const MyRecipesPage = lazy(() => import("../pages/MyRecipesPage.js"));
 
 export const App = () => {
 	const { isRefreshing } = useAuth();
@@ -50,6 +51,12 @@ export const App = () => {
 					path="/addRecipes"
 					element={
 						<PrivateRoute redirectTo="/" component={<AddRecipesPage />} />
+					}
+				/>
+				<Route
+					path="/myRecipes"
+					element={
+						<PrivateRoute redirectTo="/" component={<MyRecipesPage />} />
 					}
 				/>
 			</Route>

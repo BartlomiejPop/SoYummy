@@ -1,9 +1,14 @@
 import "./AddRecipes.css";
 import picturePlaceholder from "../../icons/picturePlaceholder.svg";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { addRecipe, addImage } from "../../redux/recipes/operations.js";
+// import { addImage } from "../../controllers/recipes.js";
 
 export default function AddRecipes() {
 	window.scrollTo(0, 0);
+	const dispatch = useDispatch();
+	const fileInputRef = useRef(null);
 
 	const [formData, setFormData] = useState({
 		title: "",
@@ -23,7 +28,23 @@ export default function AddRecipes() {
 		const time = form.elements.time.value;
 		const ingredients = form.elements.ingredients.value;
 		const recipe = form.elements.recipe.value;
-		console.error(title, about, recipe, time, category);
+
+		dispatch(
+			addRecipe({
+				img: "",
+				title: title,
+				about: about,
+				category: category,
+				time: time,
+				ingredients: ingredients,
+				recipe: recipe,
+			})
+		);
+		form.reset();
+	};
+
+	const handleImageClick = () => {
+		fileInputRef.current.click();
 	};
 
 	const handleInputChange = (e) => {
@@ -34,15 +55,28 @@ export default function AddRecipes() {
 		});
 	};
 
+	const handleFileChange = (e) => {
+		// Obsługa zmiany pliku
+		const selectedFile = e.target.files[0];
+		// Możesz dodać tutaj kod do obsługi wybranego pliku
+		addImage(selectedFile);
+	};
+
 	return (
 		<div className="addRecipes">
 			<h1 className="addRecipesTitle"> ADD RECIPE</h1>
 			<div className="addRecipesWrapper">
 				<div className="addRecipesDescription">
-					<div className="addRecipesImage">
-						<img src={picturePlaceholder} className="addRecipesIcon" />
-					</div>
 					<form className="addRecipesForm" onSubmit={handleSubmit}>
+						<div className="addRecipesImage" onClick={handleImageClick}>
+							<img src={picturePlaceholder} className="addRecipesIcon" />
+							<input
+								type="file"
+								ref={fileInputRef}
+								style={{ display: "none" }}
+								onChange={handleFileChange}
+							/>
+						</div>
 						<div className="addRecipesInputBox">
 							<input
 								required

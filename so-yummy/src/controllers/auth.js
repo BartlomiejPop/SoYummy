@@ -1,10 +1,26 @@
 // const jwt = require("jsonwebtoken");
 import User from "../schemas/user.js";
 import jwt from "jsonwebtoken";
+import passport from "../config/config-passport.js";
 // const passport = require("../config/config-passport");
 // const User = require("../service/schemas/user");
 
 const secret = "secret";
+
+const auth = (req, res, next) => {
+	passport.authenticate("jwt", (err, user) => {
+		if (!user || err) {
+			return res.status(401).json({
+				status: "error",
+				code: 401,
+				message: "Not authorized",
+				data: "Unauthorized",
+			});
+		}
+		req.user = user;
+		next();
+	})(req, res, next);
+};
 
 const login = async (req, res) => {
 	const { email, password } = req.body;
@@ -107,4 +123,4 @@ const logout = async (req, res) => {
 	});
 };
 
-export default { login, register, logout };
+export default { login, register, logout, auth };
