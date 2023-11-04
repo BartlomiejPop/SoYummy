@@ -16,6 +16,7 @@ import { deleteRecipe } from "../../redux/recipes/operations.js";
 
 export const MyRecipes = () => {
 	const dispatch = useDispatch();
+	const navigate = useNavigate();
 	const recipes = useSelector(selectMyRecipes);
 	// dispatch(getMyRecipes);
 	useEffect(() => {
@@ -48,7 +49,13 @@ export const MyRecipes = () => {
 								}}>
 								<img src={trashIcon} />
 							</button>
-							<button className="myRecipesButton">See recipe</button>
+							<button
+								className="myRecipesButton"
+								onClick={() => {
+									navigate(`/recipe/${el.title}`);
+								}}>
+								See recipe
+							</button>
 						</div>
 					</li>
 				))}

@@ -68,3 +68,39 @@ export const deleteRecipe = createAsyncThunk(
 export const addImage = (image) => {
 	console.error(image);
 };
+
+export const getRecipe = createAsyncThunk(
+	"getRecipe",
+	async (title, thunkAPI) => {
+		try {
+			const state = thunkAPI.getState();
+			const recipes = state.recipes.myRecipes;
+			const initialRecipes = state.recipes.initialRecipes;
+			console.error(title);
+			recipes.find((el) => el.title === title);
+			const breakfast = initialRecipes.breakfast.find(
+				(el) => el.title === title
+			);
+			const miscellaneous = initialRecipes.miscellaneous.find(
+				(el) => el.title === title
+			);
+			const chicken = initialRecipes.chicken.find((el) => el.title === title);
+			const desserts = initialRecipes.desserts.find((el) => el.title === title);
+			const pasta = initialRecipes.pasta.find((el) => el.title === title);
+			const seafood = initialRecipes.seafood.find((el) => el.title === title);
+			const beef = initialRecipes.beef.find((el) => el.title === title);
+			const recipe =
+				breakfast ||
+				miscellaneous ||
+				desserts ||
+				pasta ||
+				seafood ||
+				beef ||
+				chicken ||
+				recipes.find((el) => el.title === title);
+			console.error(recipe);
+		} catch (e) {
+			return thunkAPI.rejectWithValue(e.message);
+		}
+	}
+);

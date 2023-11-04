@@ -28,4 +28,8 @@ const removeRecipe = (id) => {
 	return Recipe.findByIdAndRemove({ _id: id });
 };
 
+// const getRecipe = (title) => {
+// 	return Recipe.find((el) => el.title === title);
+// };
+
 export default { createRecipe, getMyRecipes, removeRecipe };

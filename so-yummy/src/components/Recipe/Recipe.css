@@ -1,0 +1,49 @@
+.recipe {
+	padding: 80px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 90px;
+}
+
+.recipeTitle {
+	color: #8baa36;
+	font-size: 45px;
+}
+
+.recipeContentBox {
+	display: flex;
+	justify-content: space-evenly;
+	width: 100%;
+}
+
+.recipeAbout,
+.recipeIngredients,
+.recipeRecipe {
+	border-top: 2px solid #8baa36;
+	border-bottom: 2px solid #8baa36;
+	background-color: rgba(164, 164, 164, 0.15);
+	min-height: 150px;
+	min-width: 300px;
+	padding: 10px;
+	color: rgb(21, 20, 20);
+	font-weight: 600;
+}
+
+.recipeFavButton {
+	padding: 10px 30px;
+	border: 2px solid #8baa36;
+	border-radius: 20px 50px;
+	background-color: transparent;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+.recipeTimeBox {
+	display: flex;
+	gap: 10px;
+}
+
+.recipeTime {
+	font-size: 20px;
+}
