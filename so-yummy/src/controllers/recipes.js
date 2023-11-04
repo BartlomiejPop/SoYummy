@@ -106,4 +106,25 @@ export const getFavorites = async (req, res, next) => {
 	}
 };
 
-export default { create, get, remove, addToFavorites };
+export const deleteFromFavorites = async (req, res, next) => {
+	try {
+		const deletedFromFavoritedRecipe = await recipes.deleteFromFavorites();
+		res.json({
+			status: "success",
+			code: 200,
+			data: deletedFromFavoritedRecipe,
+		});
+	} catch (e) {
+		console.error(e);
+		next(e);
+	}
+};
+
+export default {
+	create,
+	get,
+	remove,
+	addToFavorites,
+	getFavorites,
+	deleteFromFavorites,
+};

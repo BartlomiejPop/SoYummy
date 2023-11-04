@@ -1,6 +1,5 @@
 import "./Navigation.css";
 import { useNavigate } from "react-router";
-import { useParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 
 export const Navigation = () => {
@@ -30,9 +29,6 @@ export const Navigation = () => {
 			</li>
 			<li key="navigationItem4" className="navigationItem">
 				<NavLink to="/favorites">Favorites</NavLink>
-			</li>
-			<li key="navigationItem5" className="navigationItem">
-				<NavLink to="/shoppingList">Shopping list</NavLink>
 			</li>
 		</ul>
 	);

@@ -1,9 +1,10 @@
 import "./CategoriesResults.css";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
 import { selectCategory } from "../../redux/recipes/selectors";
 
 export const CategoriesResults = () => {
+	const navigate = useNavigate();
 	const categories = useSelector(selectCategory);
 	const [searchParams] = useSearchParams();
 
@@ -17,7 +18,13 @@ export const CategoriesResults = () => {
 				{recipes &&
 					recipes.map((el, index) => (
 						<li className="CategoriesResultItem" key={index}>
-							<img src={el.picture} alt={el.name} />
+							<img
+								src={el.picture}
+								alt={el.name}
+								onClick={() => {
+									navigate(`/recipe/${el.title}`);
+								}}
+							/>
 						</li>
 					))}
 			</ul>

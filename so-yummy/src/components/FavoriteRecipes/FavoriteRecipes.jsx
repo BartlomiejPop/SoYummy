@@ -9,10 +9,11 @@ import { selectFavorites } from "../../redux/recipes/selectors";
 import { useDispatch } from "react-redux";
 import { addRecipe } from "../../redux/recipes/operations.js";
 import { getFavorites } from "../../redux/recipes/operations.js";
-import "./MyRecipes.css";
+import "./FavoriteRecipes.css";
 import photo from "../../images/appleFrangipanTort.png";
 import trashIcon from "../../icons/trash.svg";
 import { deleteRecipe } from "../../redux/recipes/operations.js";
+import { deleteFromFavorites } from "../../redux/recipes/operations.js";
 import img from "../../images/ownRecipeImg.jpg";
 
 export const MyRecipes = () => {
@@ -24,11 +25,11 @@ export const MyRecipes = () => {
 		dispatch(getFavorites());
 	}, [dispatch]);
 
-	const handleDelete = (id) => dispatch(deleteRecipe(id));
+	const handleDelete = (id) => dispatch(deleteFromFavorites(id));
 
 	return (
 		<div>
-			<h1 className="myRecipesTitle">My recipes</h1>
+			<h1 className="myRecipesTitle">Favorites</h1>
 			<ul className="myRecipesList">
 				{recipes.map((el, index) => (
 					<li className="myRecipesItem" key={index}>

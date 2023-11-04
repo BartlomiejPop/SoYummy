@@ -4,7 +4,6 @@ import Notiflix from "notiflix";
 // import dotenv from "dotenv";
 // dotenv.config();
 // import upload from "../../app.js";
-import { fetchMyRecipes } from "./slice.js";
 
 export const addRecipe = createAsyncThunk(
 	"addRecipe",
@@ -33,7 +32,7 @@ export const addRecipe = createAsyncThunk(
 );
 
 export const getMyRecipes = createAsyncThunk(
-	"fetchMyRecipes",
+	"getMyRecipes",
 	async (_, thunkAPI) => {
 		try {
 			const response = await axios.get("http://localhost:3000/myRecipes");
@@ -118,13 +117,28 @@ export const addToFavorites = createAsyncThunk(
 );
 
 export const getFavorites = createAsyncThunk(
-	"fetchMyRecipes",
+	"getFavorites",
 	async (_, thunkAPI) => {
 		try {
+			console.error("test");
 			const response = await axios.get("http://localhost:3000/favorites");
 			const myRecipes = response.data.data;
-			console.error(myRecipes);
+
 			return myRecipes;
+		} catch (e) {
+			return thunkAPI.rejectWithValue(e.message);
+		}
+	}
+);
+
+export const deleteFromFavorites = createAsyncThunk(
+	"deleteFromFavorites",
+	async (recipeId, thunkAPI) => {
+		try {
+			const response = await axios.patch(
+				`http://localhost:3000/deleteFromFavorites/${recipeId}`
+			);
+			return response.data;
 		} catch (e) {
 			return thunkAPI.rejectWithValue(e.message);
 		}

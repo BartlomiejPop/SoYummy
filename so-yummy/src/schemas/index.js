@@ -51,12 +51,12 @@ const addToFavorites = ({
 };
 
 const getFavorites = async () => {
-	return Recipe.find((el) => el.favorite === true);
+	return Recipe.find({ favorite: true });
 };
 
-// const getRecipe = (title) => {
-// 	return Recipe.find((el) => el.title === title);
-// };
+const deleteFromFavorites = async (id) => {
+	return Recipe.findOneAndUpdate(id)({ favorite: false });
+};
 
 export default {
 	createRecipe,
@@ -64,4 +64,5 @@ export default {
 	removeRecipe,
 	addToFavorites,
 	getFavorites,
+	deleteFromFavorites,
 };

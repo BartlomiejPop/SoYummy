@@ -16,6 +16,8 @@ router.delete("/remove/:id", ctrRecipes.remove);
 
 router.post("/addToFavorites", ctrRecipes.addToFavorites);
 
-router.post("/favorites", ctrRecipes.getFavorites);
+router.get("/favorites", ctrRecipes.getFavorites);
+
+router.patch("/deleteFromFavorites/:id", ctrRecipes.deleteFromFavorites);
 
 export default router;
