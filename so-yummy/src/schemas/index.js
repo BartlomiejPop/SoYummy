@@ -36,6 +36,7 @@ const addToFavorites = ({
 	time,
 	ingredients,
 	recipe,
+	favorite,
 }) => {
 	return Recipe.create({
 		img,
@@ -45,11 +46,22 @@ const addToFavorites = ({
 		time,
 		ingredients,
 		recipe,
+		favorite,
 	});
+};
+
+const getFavorites = async () => {
+	return Recipe.find((el) => el.favorite === true);
 };
 
 // const getRecipe = (title) => {
 // 	return Recipe.find((el) => el.title === title);
 // };
 
-export default { createRecipe, getMyRecipes, removeRecipe, addToFavorites };
+export default {
+	createRecipe,
+	getMyRecipes,
+	removeRecipe,
+	addToFavorites,
+	getFavorites,
+};

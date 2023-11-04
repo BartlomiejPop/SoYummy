@@ -65,11 +65,10 @@ export const remove = async (req, res, next) => {
 	}
 };
 
-export default { create, get, remove };
-
 export const addToFavorites = async (req, res, next) => {
-	const { img, title, about, category, time, ingredients, recipe } =
-		req.body.recipe;
+	console.error(req.body);
+	const { img, title, about, category, time, ingredients, recipe } = req.body;
+	const favorite = true;
 	try {
 		const result = await recipes.addToFavorites({
 			img,
@@ -79,6 +78,7 @@ export const addToFavorites = async (req, res, next) => {
 			time,
 			ingredients,
 			recipe,
+			favorite,
 		});
 
 		res.status(201).json({
@@ -91,3 +91,19 @@ export const addToFavorites = async (req, res, next) => {
 		next(e);
 	}
 };
+
+export const getFavorites = async (req, res, next) => {
+	try {
+		const favoriteRecipes = await recipes.getFavorites();
+		res.json({
+			status: "success",
+			code: 200,
+			data: favoriteRecipes,
+		});
+	} catch (e) {
+		console.error(e);
+		next(e);
+	}
+};
+
+export default { create, get, remove, addToFavorites };

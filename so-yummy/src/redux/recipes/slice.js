@@ -1,6 +1,12 @@
 // import pkg from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import { addRecipe, getMyRecipes, deleteRecipe } from "./operations.js";
+import {
+	addRecipe,
+	getMyRecipes,
+	deleteRecipe,
+	addToFavorites,
+	getFavorites,
+} from "./operations.js";
 
 //BREAKFAST
 import bananaPancakes from "../../images/bananaPancakes.png";
@@ -157,6 +163,12 @@ const recipesSlice = createSlice({
 		[deleteRecipe.fulfilled](state, action) {
 			const recipeId = action.payload.data._id;
 			state.myRecipes = state.myRecipes.filter((el) => el._id !== recipeId);
+		},
+		[addToFavorites.fulfilled](state, action) {
+			state.favoriteRecipes.push(action.payload);
+		},
+		[getFavorites.fulfilled](state, action) {
+			state.favoriteRecipes = action.payload;
 		},
 		// [addRecipe.rejected]: handleRejected,
 	},

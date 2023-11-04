@@ -40,10 +40,6 @@ export const getMyRecipes = createAsyncThunk(
 			const myRecipes = response.data.data;
 			console.error(myRecipes);
 			return myRecipes;
-			// console.error(fetchMyRecipes, myRecipes);
-			// fetchMyRecipes({ myRecipes });
-
-			// return response.data;
 		} catch (e) {
 			return thunkAPI.rejectWithValue(e.message);
 		}
@@ -115,6 +111,20 @@ export const addToFavorites = createAsyncThunk(
 			);
 			Notiflix.Notify.success("Recipe added to favorites");
 			return response.data;
+		} catch (e) {
+			return thunkAPI.rejectWithValue(e.message);
+		}
+	}
+);
+
+export const getFavorites = createAsyncThunk(
+	"fetchMyRecipes",
+	async (_, thunkAPI) => {
+		try {
+			const response = await axios.get("http://localhost:3000/favorites");
+			const myRecipes = response.data.data;
+			console.error(myRecipes);
+			return myRecipes;
 		} catch (e) {
 			return thunkAPI.rejectWithValue(e.message);
 		}
