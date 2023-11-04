@@ -66,3 +66,28 @@ export const remove = async (req, res, next) => {
 };
 
 export default { create, get, remove };
+
+export const addToFavorites = async (req, res, next) => {
+	const { img, title, about, category, time, ingredients, recipe } =
+		req.body.recipe;
+	try {
+		const result = await recipes.addToFavorites({
+			img,
+			title,
+			about,
+			category,
+			time,
+			ingredients,
+			recipe,
+		});
+
+		res.status(201).json({
+			status: "success",
+			code: 201,
+			data: result,
+		});
+	} catch (e) {
+		console.error(e);
+		next(e);
+	}
+};

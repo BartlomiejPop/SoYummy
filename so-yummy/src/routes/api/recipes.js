@@ -14,4 +14,6 @@ router.get("/myRecipes", ctrRecipes.get);
 
 router.delete("/remove/:id", ctrRecipes.remove);
 
+router.post("/addToFavorites", ctrRecipes.addToFavorites);
+
 export default router;

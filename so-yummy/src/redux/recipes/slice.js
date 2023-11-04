@@ -68,7 +68,15 @@ const initialState = {
 			{ title: "Portugese custard tarts", picture: portugeseCustardTarts },
 			{ title: "Portugese prego por", picture: portugesePregoPor },
 			{ title: "Stuffed lamb tomatoes", picture: stuffedLambTomatoes },
-			{ title: "Salmon eggs benedict", picture: salmonEggsBenedict },
+			{
+				title: "Salmon eggs benedict",
+				picture: salmonEggsBenedict,
+				about:
+					"Salmon eggs are rich in essential nutrients, low in calories, and recommended as part of a healthy diet. Including salmon in a balanced diet can help decrease the chances of heart disease, ease inflammation, and more. ",
+				time: "20 min",
+				recipe: "xd",
+				ingredients: "egg, salmon",
+			},
 		],
 		chicken: [
 			{

@@ -3,6 +3,8 @@ import picturePlaceholder from "../../icons/picturePlaceholder.svg";
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addRecipe, addImage } from "../../redux/recipes/operations.js";
+import img from "../../images/ownRecipeImg.jpg";
+// import { upload } from "../../server.js";
 // import { addImage } from "../../controllers/recipes.js";
 
 export default function AddRecipes() {
@@ -69,9 +71,10 @@ export default function AddRecipes() {
 				<div className="addRecipesDescription">
 					<form className="addRecipesForm" onSubmit={handleSubmit}>
 						<div className="addRecipesImage" onClick={handleImageClick}>
-							<img src={picturePlaceholder} className="addRecipesIcon" />
+							<img src={img} className="addRecipesIcon" />
 							<input
 								type="file"
+								name="image"
 								ref={fileInputRef}
 								style={{ display: "none" }}
 								onChange={handleFileChange}

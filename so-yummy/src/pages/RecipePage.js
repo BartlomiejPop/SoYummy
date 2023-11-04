@@ -5,6 +5,7 @@ import Footer from "../components/Footer/Footer.jsx";
 import "./Recipes.css";
 
 export default function Register() {
+	window.scrollTo(0, 0);
 	return (
 		<div>
 			<Helmet>

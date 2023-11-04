@@ -11,7 +11,6 @@ export const addRecipe = createAsyncThunk(
 	async (recipe, thunkAPI) => {
 		const state = thunkAPI.getState();
 		const recipes = state.recipes.myRecipes;
-		console.error(recipe);
 		const existingRecipe = recipes.find(
 			(existingRecipe) => existingRecipe.title === recipe.title
 		);
@@ -69,36 +68,53 @@ export const addImage = (image) => {
 	console.error(image);
 };
 
-export const getRecipe = createAsyncThunk(
-	"getRecipe",
-	async (title, thunkAPI) => {
+export const getRecipe = (title) => (dispatch, getState) => {
+	const state = getState();
+	const recipes = state.recipes.myRecipes;
+	const initialRecipes = state.recipes.initialRecipes;
+	console.error(title);
+	recipes.find((el) => el.title === title);
+	const breakfast = initialRecipes.breakfast.find((el) => el.title === title);
+	const miscellaneous = initialRecipes.miscellaneous.find(
+		(el) => el.title === title
+	);
+	const chicken = initialRecipes.chicken.find((el) => el.title === title);
+	const desserts = initialRecipes.desserts.find((el) => el.title === title);
+	const pasta = initialRecipes.pasta.find((el) => el.title === title);
+	const seafood = initialRecipes.seafood.find((el) => el.title === title);
+	const beef = initialRecipes.beef.find((el) => el.title === title);
+	const recipe =
+		breakfast ||
+		miscellaneous ||
+		desserts ||
+		pasta ||
+		seafood ||
+		beef ||
+		chicken ||
+		recipes.find((el) => el.title === title);
+	return recipe;
+};
+
+export const addToFavorites = createAsyncThunk(
+	"addToFavorites",
+	async (recipe, thunkAPI) => {
+		const state = thunkAPI.getState();
+		const favRecipes = state.recipes.favoriteRecipes;
+		const existingRecipe = favRecipes.find(
+			(existingRecipe) => existingRecipe.title === recipe.title
+		);
+
+		if (existingRecipe) {
+			alert(`${existingRecipe.title} is already in your favorites`);
+			return thunkAPI.rejectWithValue("This recipe is already in favorites");
+		}
 		try {
-			const state = thunkAPI.getState();
-			const recipes = state.recipes.myRecipes;
-			const initialRecipes = state.recipes.initialRecipes;
-			console.error(title);
-			recipes.find((el) => el.title === title);
-			const breakfast = initialRecipes.breakfast.find(
-				(el) => el.title === title
+			const response = await axios.post(
+				`http://localhost:3000/addToFavorites`,
+				recipe
 			);
-			const miscellaneous = initialRecipes.miscellaneous.find(
-				(el) => el.title === title
-			);
-			const chicken = initialRecipes.chicken.find((el) => el.title === title);
-			const desserts = initialRecipes.desserts.find((el) => el.title === title);
-			const pasta = initialRecipes.pasta.find((el) => el.title === title);
-			const seafood = initialRecipes.seafood.find((el) => el.title === title);
-			const beef = initialRecipes.beef.find((el) => el.title === title);
-			const recipe =
-				breakfast ||
-				miscellaneous ||
-				desserts ||
-				pasta ||
-				seafood ||
-				beef ||
-				chicken ||
-				recipes.find((el) => el.title === title);
-			console.error(recipe);
+			Notiflix.Notify.success("Recipe added to favorites");
+			return response.data;
 		} catch (e) {
 			return thunkAPI.rejectWithValue(e.message);
 		}

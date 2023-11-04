@@ -13,6 +13,7 @@ import "./MyRecipes.css";
 import photo from "../../images/appleFrangipanTort.png";
 import trashIcon from "../../icons/trash.svg";
 import { deleteRecipe } from "../../redux/recipes/operations.js";
+import img from "../../images/ownRecipeImg.jpg";
 
 export const MyRecipes = () => {
 	const dispatch = useDispatch();
@@ -33,7 +34,7 @@ export const MyRecipes = () => {
 					<li className="myRecipesItem" key={index}>
 						<img
 							className="myRecipesImage"
-							src={photo}
+							src={img}
 							alt={`Recipe ${index + 1}`}
 						/>
 						<div className="myRecipesContent">

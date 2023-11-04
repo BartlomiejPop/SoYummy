@@ -4,11 +4,27 @@ import mongoose from "mongoose";
 import logger from "morgan";
 import authRouter from "./routes/api/auth.js";
 import recipesRouter from "./routes/api/recipes.js";
+// import multer from "multer";
+// import path from "path";
 import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
+
+// const storage = multer.diskStorage({
+// 	destination: function (req, file, cb) {
+// 		cb(null, "src/uploads"); // Folder, do którego mają być zapisywane pliki
+// 	},
+// 	filename: function (req, file, cb) {
+// 		const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+// 		cb(
+// 			null,
+// 			file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname)
+// 		);
+// 	},
+// });
+// const upload = multer({ storage: storage });
 
 app.use(logger(formatsLogger));
 app.use(cors());
@@ -45,3 +61,5 @@ try {
 	console.error(error);
 	process.exit(1);
 }
+
+// export default upload;
