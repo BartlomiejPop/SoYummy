@@ -5,7 +5,10 @@ import recipes from "../schemas/index.js";
 export const create = async (req, res, next) => {
 	const { img, title, about, category, time, ingredients, recipe } = req.body;
 	try {
+		console.error(req.user);
+		const user = req.user._id;
 		const result = await recipes.createRecipe({
+			user,
 			img,
 			title,
 			about,
@@ -28,7 +31,8 @@ export const create = async (req, res, next) => {
 
 export const get = async (req, res, next) => {
 	try {
-		const myRecipes = await recipes.getMyRecipes();
+		const userId = req.user._id;
+		const myRecipes = await recipes.getMyRecipes(userId);
 		res.json({
 			status: "success",
 			code: 200,
@@ -70,7 +74,9 @@ export const addToFavorites = async (req, res, next) => {
 	const { img, title, about, category, time, ingredients, recipe } = req.body;
 	const favorite = true;
 	try {
+		const userId = req.user._id;
 		const result = await recipes.addToFavorites({
+			userId,
 			img,
 			title,
 			about,
@@ -94,7 +100,8 @@ export const addToFavorites = async (req, res, next) => {
 
 export const getFavorites = async (req, res, next) => {
 	try {
-		const favoriteRecipes = await recipes.getFavorites();
+		const userId = req.user._id;
+		const favoriteRecipes = await recipes.getFavorites(userId);
 		res.json({
 			status: "success",
 			code: 200,

@@ -2,6 +2,7 @@ import Recipe from "./recipes.js";
 import User from "./user.js";
 
 const createRecipe = ({
+	user,
 	img,
 	title,
 	about,
@@ -11,6 +12,7 @@ const createRecipe = ({
 	recipe,
 }) => {
 	return Recipe.create({
+		user,
 		img,
 		title,
 		about,
@@ -21,8 +23,8 @@ const createRecipe = ({
 	});
 };
 
-const getMyRecipes = async () => {
-	return Recipe.find();
+const getMyRecipes = async (userId) => {
+	return Recipe.find({ user: userId });
 };
 
 const removeRecipe = (id) => {
@@ -30,6 +32,7 @@ const removeRecipe = (id) => {
 };
 
 const addToFavorites = ({
+	user,
 	img,
 	title,
 	about,
@@ -40,6 +43,7 @@ const addToFavorites = ({
 	favorite,
 }) => {
 	return Recipe.create({
+		user,
 		img,
 		title,
 		about,
@@ -51,8 +55,8 @@ const addToFavorites = ({
 	});
 };
 
-const getFavorites = async () => {
-	return Recipe.find({ favorite: true });
+const getFavorites = async (userId) => {
+	return Recipe.find({ favorite: true, user: userId });
 };
 
 const deleteFromFavorites = async (id) => {
