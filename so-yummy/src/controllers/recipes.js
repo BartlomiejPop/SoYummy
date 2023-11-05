@@ -74,7 +74,7 @@ export const addToFavorites = async (req, res, next) => {
 	const { img, title, about, category, time, ingredients, recipe } = req.body;
 	const favorite = true;
 	try {
-		const user = req.user._id;
+		const user = req.user;
 		const result = await recipes.addToFavorites({
 			user,
 			img,

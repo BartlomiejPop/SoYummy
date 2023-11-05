@@ -38,9 +38,18 @@ export const Recipe = () => {
 		<div className="recipe">
 			<h1 className="recipeTitle">{recipeEl.title}</h1>
 			<div className="recipeContentBox">
-				<p className="recipeAbout">{recipeEl.about}</p>
-				<p className="recipeIngredients">{recipeEl.ingredients}</p>
-				<p className="recipeRecipe">{recipeEl.recipe}</p>
+				<div className="recipeBox">
+					<span className="recipeBoxName">About</span>
+					<p className="recipeAbout">{recipeEl.about}</p>
+				</div>
+				<div className="recipeBox">
+					<span className="recipeBoxName">Ingredients</span>
+					<p className="recipeIngredients">{recipeEl.ingredients}</p>
+				</div>
+				<div className="recipeBox">
+					<span className="recipeBoxName">Recipe</span>
+					<p className="recipeRecipe">{recipeEl.recipe}</p>
+				</div>
 			</div>
 			<button
 				className="recipeFavButton"

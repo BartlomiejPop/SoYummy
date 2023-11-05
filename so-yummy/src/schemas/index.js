@@ -24,7 +24,7 @@ const createRecipe = ({
 };
 
 const getMyRecipes = async (userId) => {
-	return Recipe.find({ user: userId });
+	return Recipe.find({ user: userId, favorite: false });
 };
 
 const removeRecipe = (id) => {
