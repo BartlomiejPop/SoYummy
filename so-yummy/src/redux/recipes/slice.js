@@ -6,6 +6,7 @@ import {
 	deleteRecipe,
 	addToFavorites,
 	getFavorites,
+	deleteFromFavorites,
 } from "./operations.js";
 
 //BREAKFAST
@@ -406,6 +407,12 @@ const recipesSlice = createSlice({
 
 		[addToFavorites.fulfilled](state, action) {
 			state.favoriteRecipes.push(action.payload);
+		},
+		[deleteFromFavorites.fulfilled](state, action) {
+			const recipeId = action.payload.id;
+			state.favoriteRecipes = state.favoriteRecipes.filter(
+				(el) => el.id !== recipeId
+			);
 		},
 
 		// [addRecipe.rejected]: handleRejected,

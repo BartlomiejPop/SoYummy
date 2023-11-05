@@ -55,7 +55,7 @@ const getFavorites = async () => {
 };
 
 const deleteFromFavorites = async (id) => {
-	return Recipe.findOneAndUpdate(id)({ favorite: false });
+	return Recipe.findOneAndUpdate({ _id: id }, { favorite: false });
 };
 
 export default {

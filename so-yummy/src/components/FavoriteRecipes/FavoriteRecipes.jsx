@@ -14,6 +14,7 @@ import photo from "../../images/appleFrangipanTort.png";
 import trashIcon from "../../icons/trash.svg";
 import { deleteRecipe } from "../../redux/recipes/operations.js";
 import { deleteFromFavorites } from "../../redux/recipes/operations.js";
+import { getMyRecipes } from "../../redux/recipes/operations.js";
 import img from "../../images/ownRecipeImg.jpg";
 
 export const MyRecipes = () => {
@@ -25,7 +26,10 @@ export const MyRecipes = () => {
 		dispatch(getFavorites());
 	}, [dispatch]);
 
-	const handleDelete = (id) => dispatch(deleteFromFavorites(id));
+	const handleDelete = (id) => {
+		dispatch(deleteFromFavorites(id));
+		dispatch(getMyRecipes());
+	};
 
 	return (
 		<div>

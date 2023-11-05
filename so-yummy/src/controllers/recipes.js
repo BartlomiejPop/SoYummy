@@ -107,8 +107,9 @@ export const getFavorites = async (req, res, next) => {
 };
 
 export const deleteFromFavorites = async (req, res, next) => {
+	const { id } = req.params;
 	try {
-		const deletedFromFavoritedRecipe = await recipes.deleteFromFavorites();
+		const deletedFromFavoritedRecipe = await recipes.deleteFromFavorites(id);
 		res.json({
 			status: "success",
 			code: 200,

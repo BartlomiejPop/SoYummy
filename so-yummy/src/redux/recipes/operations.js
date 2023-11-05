@@ -5,6 +5,14 @@ import Notiflix from "notiflix";
 // dotenv.config();
 // import upload from "../../app.js";
 
+const setAuthToken = (token) => {
+	if (token) {
+		axios.defaults.headers.common["Authorization"] = `Bearer ${token}`;
+	} else {
+		delete axios.defaults.headers.common["Authorization"];
+	}
+};
+
 export const addRecipe = createAsyncThunk(
 	"addRecipe",
 	async (recipe, thunkAPI) => {
@@ -19,6 +27,7 @@ export const addRecipe = createAsyncThunk(
 			return thunkAPI.rejectWithValue("This recipe already exists");
 		}
 		try {
+			setAuthToken(state.auth.user.token);
 			const response = await axios.post(
 				"http://localhost:3000/addRecipe",
 				recipe
@@ -34,7 +43,9 @@ export const addRecipe = createAsyncThunk(
 export const getMyRecipes = createAsyncThunk(
 	"getMyRecipes",
 	async (_, thunkAPI) => {
+		const state = thunkAPI.getState();
 		try {
+			setAuthToken(state.auth.user.token);
 			const response = await axios.get("http://localhost:3000/myRecipes");
 			const myRecipes = response.data.data;
 			console.error(myRecipes);
@@ -48,7 +59,9 @@ export const getMyRecipes = createAsyncThunk(
 export const deleteRecipe = createAsyncThunk(
 	"deleteRecipe",
 	async (recipeId, thunkAPI) => {
+		const state = thunkAPI.getState();
 		try {
+			setAuthToken(state.auth.user.token);
 			const response = await axios.delete(
 				`http://localhost:3000/remove/${recipeId}`
 			);
@@ -104,6 +117,7 @@ export const addToFavorites = createAsyncThunk(
 			return thunkAPI.rejectWithValue("This recipe is already in favorites");
 		}
 		try {
+			setAuthToken(state.auth.user.token);
 			const response = await axios.post(
 				`http://localhost:3000/addToFavorites`,
 				recipe
@@ -119,8 +133,9 @@ export const addToFavorites = createAsyncThunk(
 export const getFavorites = createAsyncThunk(
 	"getFavorites",
 	async (_, thunkAPI) => {
+		const state = thunkAPI.getState();
 		try {
-			console.error("test");
+			setAuthToken(state.auth.user.token);
 			const response = await axios.get("http://localhost:3000/favorites");
 			const myRecipes = response.data.data;
 
@@ -134,7 +149,9 @@ export const getFavorites = createAsyncThunk(
 export const deleteFromFavorites = createAsyncThunk(
 	"deleteFromFavorites",
 	async (recipeId, thunkAPI) => {
+		const state = thunkAPI.getState();
 		try {
+			setAuthToken(state.auth.user.token);
 			const response = await axios.patch(
 				`http://localhost:3000/deleteFromFavorites/${recipeId}`
 			);
