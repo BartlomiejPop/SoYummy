@@ -1,4 +1,5 @@
 import Recipe from "./recipes.js";
+import User from "./user.js";
 
 const createRecipe = ({
 	img,

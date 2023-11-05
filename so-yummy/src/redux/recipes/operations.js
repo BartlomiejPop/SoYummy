@@ -27,7 +27,7 @@ export const addRecipe = createAsyncThunk(
 			return thunkAPI.rejectWithValue("This recipe already exists");
 		}
 		try {
-			setAuthToken(state.auth.user.token);
+			setAuthToken(state.auth.token);
 			const response = await axios.post(
 				"http://localhost:3000/addRecipe",
 				recipe
@@ -45,10 +45,9 @@ export const getMyRecipes = createAsyncThunk(
 	async (_, thunkAPI) => {
 		const state = thunkAPI.getState();
 		try {
-			setAuthToken(state.auth.user.token);
+			setAuthToken(state.auth.token);
 			const response = await axios.get("http://localhost:3000/myRecipes");
 			const myRecipes = response.data.data;
-			console.error(myRecipes);
 			return myRecipes;
 		} catch (e) {
 			return thunkAPI.rejectWithValue(e.message);
@@ -61,7 +60,7 @@ export const deleteRecipe = createAsyncThunk(
 	async (recipeId, thunkAPI) => {
 		const state = thunkAPI.getState();
 		try {
-			setAuthToken(state.auth.user.token);
+			setAuthToken(state.auth.token);
 			const response = await axios.delete(
 				`http://localhost:3000/remove/${recipeId}`
 			);
@@ -117,7 +116,7 @@ export const addToFavorites = createAsyncThunk(
 			return thunkAPI.rejectWithValue("This recipe is already in favorites");
 		}
 		try {
-			setAuthToken(state.auth.user.token);
+			setAuthToken(state.auth.token);
 			const response = await axios.post(
 				`http://localhost:3000/addToFavorites`,
 				recipe
@@ -135,7 +134,7 @@ export const getFavorites = createAsyncThunk(
 	async (_, thunkAPI) => {
 		const state = thunkAPI.getState();
 		try {
-			setAuthToken(state.auth.user.token);
+			setAuthToken(state.auth.token);
 			const response = await axios.get("http://localhost:3000/favorites");
 			const myRecipes = response.data.data;
 
@@ -151,7 +150,7 @@ export const deleteFromFavorites = createAsyncThunk(
 	async (recipeId, thunkAPI) => {
 		const state = thunkAPI.getState();
 		try {
-			setAuthToken(state.auth.user.token);
+			setAuthToken(state.auth.token);
 			const response = await axios.patch(
 				`http://localhost:3000/deleteFromFavorites/${recipeId}`
 			);

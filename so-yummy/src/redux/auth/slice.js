@@ -35,17 +35,18 @@ const authSlice = createSlice({
 	},
 	extraReducers: {
 		[register.fulfilled](state, action) {
-			state.user = action.payload.user;
-			state.token = action.payload.token;
-			state.isLoggedIn = true;
-			state.error = null;
+			// state.user = action.payload.data.user;
+			// state.token = action.payload.data.token;
+			// state.isLoggedIn = true;
+			// state.error = null;
 		},
 		[register.rejected](state, action) {
 			state.error = action.payload;
 		},
 		[login.fulfilled](state, action) {
-			state.user = action.payload.user;
-			state.token = action.payload.token;
+			console.error(action.payload);
+			state.user = action.payload.data.user;
+			state.token = action.payload.data.token;
 			state.isLoggedIn = true;
 			state.error = null;
 		},

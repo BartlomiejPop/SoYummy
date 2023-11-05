@@ -11,6 +11,7 @@ import emailIcon from "../icons/email.svg";
 import passwordIcon from "../icons/password.svg";
 import { NavLink } from "react-router-dom";
 import { loginUser, loginUserError } from "../redux/auth/slice.js";
+import { login } from "../redux/auth/operations.js";
 // import { authApi } from "../../api/auth.services";
 import { authApi } from "../routes/api/services.js";
 // import User from "../schemas/user.js";
@@ -32,32 +33,16 @@ export default function Login() {
 		const form = e.currentTarget;
 		const password = form.elements.password.value;
 		const email = form.elements.email.value;
-		try {
-			const response = await fetch(`${BASE_URL}/login`, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ password, email }),
-			});
-			const responseData = await response.json();
-			const token = responseData.data.token;
-			const name = responseData.data.user.name;
-			if (response.ok) {
-				dispatch(loginUser({ email, token, name }));
-				Notiflix.Notify.success("Logged in successfully");
-				navigate("/home");
-			} else {
-				Notiflix.Notify.failure("Wrong email or password");
-			}
-		} catch (error) {
-			console.error(error);
-			dispatch(loginUserError());
-			if (error.response && error.response.status === 401) {
-				Notiflix.Notify.failure("Login error. Email or password is incorrect!");
-			} else {
-				Notiflix.Notify.failure("Login error. Try again.");
-			}
+		const response = await dispatch(
+			login({
+				password,
+				email,
+			})
+		);
+		const shouldRedirect = response.payload.status === "success";
+		if (shouldRedirect) {
+			navigate("/home");
+			Notiflix.Notify.success("Logged in");
 		}
 	};
 
@@ -105,7 +90,7 @@ export default function Login() {
 									onChange={handleInputChange}
 								/>
 							</div>
-							<button className="button"> Sign in</button>
+							<button className="button">Sign in</button>
 						</div>
 					</form>
 					<NavLink className="navLink" to="/register">

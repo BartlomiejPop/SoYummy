@@ -10,7 +10,7 @@ import emailIcon from "../icons/email.svg";
 import passwordIcon from "../icons/password.svg";
 import { NavLink } from "react-router-dom";
 // import { setUsername } from "../redux/auth/slice.js";
-// import { register } from "../redux/auth/operations.js";
+import { register } from "../redux/auth/operations.js";
 import Notiflix from "notiflix";
 
 const BASE_URL = "http://localhost:3000";
@@ -24,6 +24,21 @@ export default function Register() {
 		return regex.test(email);
 	};
 
+	// const handleSubmit = async (e) => {
+	// 	e.preventDefault();
+	// 	const response = await dispatch(
+	// 		login({
+	// 			password,
+	// 			email,
+	// 		})
+	// 	);
+	// 	form.reset();
+	// 	const shouldRedirect = response.payload.status === "success";
+	// 	shouldRedirect
+	// 		? navigate("/home")
+	// 		: Notiflix.Notify.failure("Wrong email or password");
+	// };
+
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const form = e.currentTarget;
@@ -35,26 +50,11 @@ export default function Register() {
 			Notiflix.Notify.failure("Invalid email format!");
 			return;
 		}
-
-		try {
-			const response = await fetch(`${BASE_URL}/register`, {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ email, password, name }),
-			});
-			if (response.ok) {
-				localStorage.setItem("accessToken", response.token);
-				localStorage.setItem("Name", name);
-				form.reset();
-				Notiflix.Notify.success("Registration successful");
-				navigate("/login");
-			} else {
-				Notiflix.Notify.failure("User already exists");
-			}
-		} catch (error) {
-			Notiflix.Notify.failure("Registration failed. Please try again.");
+		const response = await dispatch(register({ email, password, name }));
+		const shouldRedirect = response.payload.status === "success";
+		if (shouldRedirect) {
+			navigate("/login");
+			Notiflix.Notify.success("User registered. Log in");
 		}
 	};
 
