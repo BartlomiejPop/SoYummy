@@ -451,6 +451,7 @@ const initialState = {
 	},
 	myRecipes: [],
 	favoriteRecipes: [],
+	searchedRecipes: [],
 };
 
 // const handlePending = (state) => {
@@ -465,7 +466,18 @@ const initialState = {
 const recipesSlice = createSlice({
 	name: "recipes",
 	initialState,
-	reducers: {},
+	reducers: {
+		searchRecipe: (state, action) => {
+			const filteredMyRecipes = state.myRecipes.filter(
+				(el) => el.title === action.payload
+			);
+			const filteredInitialRecipes = state.initialRecipes.filter(
+				(el) => el.title === action.payload
+			);
+			const searchedRecipes = filteredMyRecipes.concat(filteredInitialRecipes);
+			state.searchedRecipes = searchedRecipes;
+		},
+	},
 	extraReducers: {
 		// [addRecipe.pending]: handlePending,
 		[addRecipe.fulfilled](state, action) {
@@ -503,5 +515,5 @@ const recipesSlice = createSlice({
 		// [addRecipe.rejected]: handleRejected,
 	},
 });
-
+export const { searchRecipe } = recipesSlice.actions;
 export const recipesReducer = recipesSlice.reducer;

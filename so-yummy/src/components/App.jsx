@@ -20,11 +20,6 @@ const SearchPage = lazy(() => import("../pages/SearchPage.js"));
 
 export const App = () => {
 	const { isRefreshing } = useAuth();
-	const dispatch = useDispatch();
-
-	// useEffect(() => {
-	// 	dispatch(refreshUser());
-	// }, [dispatch]);
 
 	return isRefreshing ? (
 		<b>Refreshing user...</b>
@@ -73,7 +68,7 @@ export const App = () => {
 					}
 				/>
 				<Route
-					path="/search/:recipe"
+					path="/searchRecipes"
 					element={<PrivateRoute redirectTo="/" component={<SearchPage />} />}
 				/>
 			</Route>

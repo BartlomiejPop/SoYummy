@@ -2,37 +2,22 @@ import "./Introduction.css";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import { search } from "../../redux/recipes/operations.js";
+import Notiflix from "notiflix";
 
 export const Introduction = () => {
-	const dispatch = useDispatch();
 	const navigate = useNavigate();
-	const [value, setValue] = useState({
-		searchValue: "",
-	});
+	const [value, setValue] = useState("");
 
-	const handleSearch = (e) => {
+	const handleSearch = async (e) => {
 		e.preventDefault();
-		const form = e.currentTarget;
-		const searchValue = form.elements.search.value;
-		// const response = await dispatch(
-		// 	login({
-		// 		password,
-		// 		email,
-		// 	})
-		// );
-		// const shouldRedirect = response.payload.status === "success";
-		// if (shouldRedirect) {
-		// 	navigate("/home");
-		// 	Notiflix.Notify.success("Logged in");
-		// }
+		navigate(`/searchRecipes?name=${value}`);
+		Notiflix.Notify.success("Logged in");
 	};
 
 	const handleInputChange = (e) => {
 		const { value } = e.target;
-		console.error(value);
-		setValue({
-			searchValue: value,
-		});
+		setValue(value);
 	};
 
 	return (

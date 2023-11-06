@@ -13,3 +13,5 @@ export const selectCategory = (state) => state.recipes.initialRecipes;
 export const selectMyRecipes = (state) => state.recipes.myRecipes;
 
 export const selectFavorites = (state) => state.recipes.favoriteRecipes;
+
+export const selectSearchedRecipes = (state) => state.recipes.searchedRecipes;
