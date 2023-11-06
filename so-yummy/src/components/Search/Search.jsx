@@ -8,9 +8,10 @@ import { useEffect, useState } from "react";
 import { searchRecipe } from "../../redux/recipes/slice.js";
 
 export const Search = () => {
-	const [value, setValue] = useState(name);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const name = searchParams.get("name");
+	const [value, setValue] = useState(name);
+
 	const dispatch = useDispatch();
 
 	// useEffect(() => {

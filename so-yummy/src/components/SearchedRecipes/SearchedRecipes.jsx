@@ -1,24 +1,25 @@
-import arrowRight from "../../icons/arrow-right.svg";
 import { useSelector } from "react-redux";
-import { selectMiscellaneous } from "../../redux/recipes/selectors.js";
+import { selectSearchedRecipes } from "../../redux/recipes/selectors.js";
 import { useNavigate } from "react-router";
+import "./SearchedRecipes.css";
+import placeholder from "../../images/ownRecipeImg.jpg";
 
 export const SearchedRecipes = () => {
-	const recipes = useSelector(selectMiscellaneous);
+	const recipes = useSelector(selectSearchedRecipes);
 	const navigate = useNavigate();
 
 	return (
 		<div className="HomePageRecipes">
-			<h2 className="HomePageRecipesTitle">Miscellaneous</h2>
 			<ul className="HomeRecipesList">
-				{recipes.slice(0, 4).map((el, index) => (
+				{recipes.map((el, index) => (
 					<li className="HomeRecipesListItem" key={index}>
 						<img
-							src={el.picture}
+							src={el.picture || placeholder}
 							alt={`Recipe ${index + 1}`}
 							onClick={() => {
 								navigate(`/recipe/${el.title}`);
 							}}
+							className="searchedRecipeImg"
 						/>
 					</li>
 				))}

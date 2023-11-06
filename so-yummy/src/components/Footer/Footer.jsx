@@ -35,8 +35,8 @@ export const Footer = () => {
 				<div className="footerNewsletterBox">
 					<span className="newsletterText">Subscribe to the Newsletter</span>
 					<p>
-						Subscribe up to the newsletter. Be in touch with latest news and
-						special offers, etc.
+						This is just an education project. No emails will be sent except
+						one!
 					</p>
 					<div className="footerInputBox">
 						<img className="emailIcon" src={emailIcon} />

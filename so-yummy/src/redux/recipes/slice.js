@@ -468,13 +468,27 @@ const recipesSlice = createSlice({
 	initialState,
 	reducers: {
 		searchRecipe: (state, action) => {
-			const filteredMyRecipes = state.myRecipes.filter(
-				(el) => el.title === action.payload
+			const valuesArray = Object.values(state.initialRecipes);
+			const searchedInitialRecipesArr = [];
+			const searchedMyRecipesArr = [];
+
+			valuesArray.forEach((arrayOfObjects) =>
+				arrayOfObjects.forEach((object) => {
+					if (
+						object.title.toLowerCase().includes(action.payload.toLowerCase())
+					) {
+						searchedInitialRecipesArr.push(object);
+					}
+				})
 			);
-			const filteredInitialRecipes = state.initialRecipes.filter(
-				(el) => el.title === action.payload
+			state.myRecipes.forEach((el) => {
+				if (el.title.includes(action.payload)) {
+					searchedMyRecipesArr.push(el);
+				}
+			});
+			const searchedRecipes = searchedMyRecipesArr.concat(
+				searchedInitialRecipesArr
 			);
-			const searchedRecipes = filteredMyRecipes.concat(filteredInitialRecipes);
 			state.searchedRecipes = searchedRecipes;
 		},
 	},
