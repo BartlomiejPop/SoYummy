@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import logger from "morgan";
 import authRouter from "./routes/api/auth.js";
 import recipesRouter from "./routes/api/recipes.js";
+import emailRouter from "./routes/api/sendEmail.js";
 // import multer from "multer";
 // import path from "path";
 import dotenv from "dotenv";
@@ -31,6 +32,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/", authRouter);
 app.use("/", recipesRouter);
+app.use("/", emailRouter);
 
 app.use((_, res, next) => {
 	const err = new Error("Not Found");

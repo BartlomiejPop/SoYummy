@@ -2,8 +2,12 @@ import emailIcon from "../../icons/email.svg";
 import { useNavigate } from "react-router-dom";
 import "./Footer.css";
 import logo from "../../icons/cultery.svg";
+import sendEmail from "../../redux/sendEmail.js";
+import { useState } from "react";
 
 export const Footer = () => {
+	const [email, setEmail] = useState("");
+
 	const navigate = useNavigate();
 	return (
 		<div className="footer">
@@ -41,6 +45,8 @@ export const Footer = () => {
 					<div className="footerInputBox">
 						<img className="emailIcon" src={emailIcon} />
 						<input
+							value={email}
+							onChange={setEmail(value)}
 							className="footerInput"
 							placeholder="Enter your email address"
 						/>
