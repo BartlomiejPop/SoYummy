@@ -1,6 +1,7 @@
 import "./Navigation.css";
 import { useNavigate } from "react-router";
 import { NavLink } from "react-router-dom";
+import searchIcon from "../../icons/search.svg";
 
 export const Navigation = () => {
 	const navigate = useNavigate();
@@ -30,6 +31,11 @@ export const Navigation = () => {
 			<li key="navigationItem4" className="navigationItem">
 				<NavLink to="/favorites">Favorites</NavLink>
 			</li>
+			{/* <li key="navigationItem5" className="navigationItem">
+				<NavLink to="/search/recipe">
+					<img src={searchIcon} />
+				</NavLink>
+			</li> */}
 		</ul>
 	);
 };

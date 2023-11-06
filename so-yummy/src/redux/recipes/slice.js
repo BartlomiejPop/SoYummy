@@ -312,85 +312,114 @@ const initialState = {
 		],
 		beef: [
 			{
-				title: "Blackberry fool",
+				title: "Beef And Mustard Pie",
 				picture: beefAndMustardPie,
-				about: "",
-				time: "",
-				recipe: "",
-				ingredients: "",
+				about:
+					"Slow cooked beef makes a wonderful filling for pie. Prepare the meat stew ahead and assemble the pie when you’re ready to cook it.",
+				time: "50min",
+				recipe:
+					"Preheat the oven to 150C/300F/Gas 2.Toss the beef and flour together in a bowl with some salt and black pepper.Heat a large casserole until hot, add half of the rapeseed oil and enough of the beef to just cover the bottom of the casserole.Fry until browned on each side, then remove and set aside. Repeat with the remaining oil and beef.Return the beef to the pan, add the wine and cook until the volume of liquid has reduced by half, then add the stock, onion, carrots, thyme and mustard, and season well with salt and pepper.Cover with a lid and place in the oven for two hours.Remove from the oven, check the seasoning and set aside to cool. Remove the thyme.When the beef is cool and you're ready to assemble the pie, preheat the oven to 200C/400F/Gas 6.Transfer the beef to a pie dish, brush the rim with the beaten egg yolks and lay the pastry over the top. Brush the top of the pastry with more beaten egg.",
+				ingredients:
+					"1kg/2lb 4oz beef skirt, cut into large chunks2 tbsp plain floursalt and freshly ground black pepper2 tbsp rapeseed oil200ml/7fl oz red wine400ml/14fl oz beef stock1 onion, finely sliced2 large carrots, cut into 2.5cm/1in pieces3 sprigs thyme	2 tbsp wholegrain mustard	2 free-range egg yolks, beaten400g/14oz all-butter puff pastry, rolled to 5mm/¼in thick",
 			},
 			{
-				title: "Choc Chip Pecan Pie",
+				title: "Braised beed chilli",
 				picture: braisedBeefChilli,
-				about: "",
-				time: "",
-				recipe: "",
-				ingredients: "",
+				about:
+					"Ancho chillies, dark chocolate and paprika add wonderful flavours to this slow-cooked beef chilli. Serve it with fresh bean salsa for an impressive one-pot dish.",
+				time: "50min",
+				recipe:
+					"Heat the oven to 150°C/130°C fan/gas 2. Heat a glug of oil in a large lidded flameproof casserole over a medium heat. Fry the onions for 5 minutes, then add the spices and cook for 2-3 minutes more. Add the beef, turn up the heat and fry for 5-8 minutes to brown, stirring regularly. Add the peppers and fry for a further 5 minutes.Stir in the chillies, tomato purée, stock and tomatoes, bring to the boil, then cover with the lid and cook in the oven for 3 hours. Remove the lid and cook for a further 30 minutes. Just before serving, combine the salsa ingredients, taste and season.Once the beef is cooked, stir in the chocolate and coriander. Taste and season, then serve with rice, soured cream and the salsa.",
+				ingredients:
+					"Olive oil for frying2 red onions, thinly sliced1 tbsp ground cumin1 tsp smoked sweet paprika1 tbsp ground coriander1.5kg beef shin, diced3 green peppers, sliced2 dried ancho chillies, soaked in hot water for 10 minutes, then roughly chopped1 tbsp tomato purée500ml beef stock (we like )400g tin chopped tomatoes30g very dark chocolate (80 per cent cocoa solids), in piecesLarge bunch fresh coriander, leaves roughly chopped",
 			},
 			{
-				title: "Raspbery brownies",
+				title: "General Tsos Chicken",
 				picture: generalTsosChicken,
 				about:
 					"This is a popular Chinese-American dish that appears in suburban Chinese restaurants here in Australia under various other guises. Peking-Style Chicken or sometimes something mysteriously titled House Special Crispy Chicken. I can never resist a House Special! ",
-				time: "",
-				recipe: "",
-				ingredients: "",
+				time: "50 mins",
+				recipe:
+					"Add sugar, soy sauce, chicken broth, peanut oil, rice vinegar, sesame oil, and ginger; bring to a boil and cook for 3 minutes. Whisk 2 teaspoons of cornstarch in water until dissolved. Stir into the boiling sauce. Return to a boil and cook until the sauce thickens and is no longer cloudy from the cornstarch, about 1 minute. ",
+				ingredients:
+					"4 cups vegetable oil for frying1 large egg 1 ½ pounds skinless, boneless chicken thighs, cut into 1 1/2-inch pieces1 teaspoon salt1 teaspoon white sugar 1 pinch white pepper1 cup cornstarch",
 			},
 			{
 				title: "Beef lo mein",
 				picture: beefLoMein,
-				about: "",
-				time: "",
-				recipe: "",
-				ingredients: "",
+				about:
+					"Lo mein might already be one of your go-tos when ordering Chinese takeout. Skip spending money and make this dish at home in only 30 minutes! ",
+				time: "30 mins",
+				recipe:
+					"Using the same skillet that was used to cook beef, sautee onions until golden brown with sesame oil. Remove from the skillet. In the same skillet, saute carrots until softened, add broccoli and cook for about three minutes. Press garlic into the same mixture.",
+				ingredients:
+					"8 oz noodles (cooked according to instructions)1 tsp sesame oil1/4 cup hot boiled water1 tbsp Beef Better Than Bouillon3 tbsp soy sauce2 tbsp brown sugaroil (olive or sesame) for frying1 lb beef2 large carrots2 cup broccoli1 large onion 4 garlic cloves",
 			},
 			{
 				title: "Beef brisket pot roast",
 				picture: beefBrisketPotRoast,
-				about: "",
-				time: "",
-				recipe: "",
-				ingredients: "",
+				about:
+					"Follow our recipe to learn how to cook brisket in beer, resulting in a richer flavour and beautifully tender texture. Serve with mash, parsnips and mushrooms to soak up the gravy",
+				time: "2,5h",
+				recipe:
+					"Preheat the oven to 190C/Gas 5/fan oven 170C. Wash and dry brisket and season. Heat 2 tablespoons of oil in a deep casserole and brown beef all over. Remove from pan. Turn down heat, add butter and fry the onions, celery, carrots and mushroom stalks for 6-8 minutes.Return beef to pan and add beer, thyme, bay leaves and sugar. Add water if necessary so the liquid comes about two-thirds up the beef. Season, bring to a simmer, cover tightly, and cook in the oven for 20 minutes. Reduce heat to 160C/Gas 3/fan oven 140C and cook for 2 hours, turning twice, until tender.",
+				ingredients:
+					"1-1¼kg/2¼-2¾ lb boned and rolled beef brisket5 tbsp vegetable oillarge knob of butter2 large onions, halved and sliced2-3 celery sticks, finely chopped2 carrots, sliced200-250g/8-9oz large flat mushrooms, stalks chopped and heads thinly sliced500-550ml bottle brown ale or stouta few fresh thyme sprigs2 bay leaves1-2 tsp light muscovado sugar500g parsnips, cut into wedges1 tbsp Dijon mustardchopped fresh parsley or thyme to serve",
 			},
 			{
 				title: "Beef brisket pot",
 				picture: beefBrisketPot,
-				about: "",
-				time: "",
-				recipe: "",
-				ingredients: "",
+				about:
+					"Follow our recipe to learn how to cook brisket in beer, resulting in a richer flavour and beautifully tender texture. Serve with mash, parsnips and mushrooms to soak up the gravy",
+				time: "2,5h",
+				recipe:
+					"Return beef to pan and add beer, thyme, bay leaves and sugar. Add water if necessary so the liquid comes about two-thirds up the beef. Season, bring to a simmer, cover tightly, and cook in the oven for 20 minutes. Reduce heat to 160C/Gas 3/fan oven 140C and cook for 2 hours, turning twice, until tender.",
+				ingredients:
+					" 1-1¼kg/2¼-2¾ lb boned and rolled beef brisket5 tbsp vegetable oillarge knob of butter2 large onions, halved and sliced2-3 celery sticks, finely chopped2 carrots, sliced200-250g/8-9oz large flat mushrooms, stalks chopped and heads thinly sliced500-550ml bottle brown ale or stouta few fresh thyme sprigs2 bay leaves1-2 tsp light muscovado sugar500g parsnips, cut into wedges1 tbsp Dijon mustardchopped fresh parsley or thyme to serve",
 			},
 			{
 				title: "Beef sunday roast",
 				picture: beefSundayRoast,
-				about: "",
-				time: "",
-				recipe: "",
-				ingredients: "",
+				about:
+					"This easy roast beef recipe with carrots and a simple gravy is ideal for a stunning Sunday dinner for the family. It takes just 15 minutes to prepare.",
+				time: "1,5h",
+				recipe:
+					"Put 1 onion, cut into 8 wedges, and 500g carrots, halved lengthways, into a roasting tin and sit the beef on top, then cook for 20 mins.Reduce oven to 190C/170C fan/gas 5 and continue to cook the beef for 30 mins if you like it rare, 40 mins for medium and 1 hr for well done.Remove the beef and carrots from the oven, place onto warm plates or platters and cover with foil to keep warm.",
+				ingredients:
+					" 1 tsp plain flour 1 tsp mustard powder 950g beef top rump joint (see tip below) 1 onion, cut into 8 wedges 500g carrots, halved lengthways For the gravy 1 tbsp plain flour 250ml beef stock",
 			},
 			{
 				title: "Beef dumpling stew",
 				picture: beefDumplingStew,
-				about: "",
-				time: "",
-				recipe: "",
-				ingredients: "",
+				about:
+					"For the coldest wintry evenings, tuck into a rich beef stew with fluffy dumplings to warm you right down to your toes.",
+				time: "2h",
+				recipe:
+					"For the beef stew, heat the oil and butter in an ovenproof casserole and fry the beef until browned on all sides.Sprinkle over the flour and cook for a further 2-3 minutes. Add the garlic and all the vegetables and fry for 1-2 minutes.Stir in the wine, stock and herbs, then add the Worcestershire sauce and balsamic vinegar, to taste. Season with salt and freshly ground black pepper.Cover with a lid, transfer to the oven and cook for about two hours, or until the meat is tender.For the dumplings, sift the flour, baking powder and salt into a bowl. Add the suet and enough water to form a thick dough.With floured hands, roll spoonfuls of the dough into small balls.After two hours, remove the lid from the stew and place the balls on top of the stew. Cover, return to the oven and cook for a further 20 minutes, or until the dumplings have puffed up and are tender. (If you prefer your dumplings with a golden top, leave the lid off when returning to the oven.)",
+				ingredients:
+					"2 tbsp olive oil 25g/1oz butter 750g/1lb 10oz beef braising steak, chopped into bite-sized pieces 2 tbsp plain flour 2 garlic cloves, crushed 175g/6oz baby onions, peeled 150g/5oz celery, cut into large chunks 150g/5oz carrots, cut into large chunks 2 leeks, roughly chopped 200g/7oz swede, cut into large chunks 150ml/5fl oz red wine 500ml/18fl oz beef stock 2 fresh bay leaves 3 tbsp fresh thyme leaves 3 tbsp chopped fresh flatleaf parsley Worcestershire sauce, to taste 1 tbsp balsamic vinegar, or to taste salt and freshly ground black pepper ",
 			},
 			{
 				title: "Beef dumpling",
 				picture: beefDumpling,
-				about: "",
-				time: "",
-				recipe: "",
-				ingredients: "",
+				about:
+					"These Northern Chinese style beef dumplings with scallions are super flavorful. They’re particularly good when you make your own wrappers and boil the dumplings, which allows you to really appreciate how juicy they are! ",
+				time: "1h",
+				recipe:
+					"Put the flour in a large mixing bowl or in the bowl of a stand mixer. Gradually add the water to the flour and knead into a smooth dough (either by hand or with the dough hook attachment on low speed). This process should take about 5 minutes. If using a stand mixer, you may need to stop the mixer and bring the dough together with your hands. Knead by hand into a ball, and cover the dough in the bowl with an overturned plate. Allow to rest for 1 hour.",
+				ingredients:
+					"1/2 pound (230 grams) ground beef (at least 20% fat)1/4 cup chicken stock (or beef stock, or water 1 tablespoon light soy sauce (or soy sauce)1 tablespoon Shaoxing wine (or dry sherry)2 teaspoons ginger , grated1 teaspoon salt1/4 teaspoon ground toasted Sichuan peppercorn (or black pepper)4 green onions , coarsely chopped1 large carrot , coarsely chopped1/2 cup frozen corn , thawed1/2 cup frozen green peas , thawed1 tablespoon sesame oil20 homemade dumpling wrappers (or packaged dumpling wrappers)1 to 2 tablespoons vegetable oil",
 			},
 			{
 				title: "Beef wellington",
 				picture: beefWellington,
-				about: "",
-				time: "",
-				recipe: "",
-				ingredients: "",
+				about:
+					"Gordon Ramsay's version of the classic steak dish – a showstopping centrepiece on a special occasion",
+				time: "2,5h",
+				recipe:
+					"Sit the 1kg beef fillet on a roasting tray, brush with 1 tbsp olive oil and season with pepper, then roast for 15 mins for medium-rare or 20 mins for medium. When the beef is cooked to your liking, remove from the oven to cool, then chill in the fridge for about 20 mins.",
+				ingredients:
+					"a good beef fillet (preferably Aberdeen Angus) of around 1kg/2lb 4oz3 tbsp olive oil250g/9oz chestnut mushroom, include some wild ones if you like50g/2oz butter1 large sprig fresh thyme100ml/3.5 fl oz dry white wine12 slices prosciutto500g/1lb 2oz pack puff pastry, thawed if frozena little flour, for dusting2 egg yolks beaten with 1 tsp water",
 			},
 		],
 		seafood: [
