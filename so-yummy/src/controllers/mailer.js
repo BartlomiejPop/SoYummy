@@ -1,6 +1,5 @@
 import nodemailer from "nodemailer";
 import dotenv from "dotenv";
-import Notiflix from "notiflix";
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
@@ -11,7 +10,7 @@ const transporter = nodemailer.createTransport({
 	},
 });
 
-const sendEmail = (to) => {
+export const sendEmail = async (to) => {
 	const subject = "Thanks";
 	const text = "xd";
 	const mailOptions = {
@@ -23,10 +22,11 @@ const sendEmail = (to) => {
 
 	transporter.sendMail(mailOptions, (error, info) => {
 		if (error) {
-			Notiflix.Notify.failure("Błąd podczas wysyłania e-maila:", error);
+			console.error("Błąd podczas wysyłania e-maila:", error);
 		} else {
-			Notiflix.Notify.success("E-mail został wysłany:", info.response);
+			console.log("E-mail został wysłany:", info.response);
 		}
 	});
 };
+
 export default { sendEmail };
