@@ -11,12 +11,7 @@ export const Search = () => {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const name = searchParams.get("name");
 	const [value, setValue] = useState(name);
-
 	const dispatch = useDispatch();
-
-	// useEffect(() => {
-	// 	dispatch(searchRecipe(name));
-	// }, [dispatch]);
 
 	const handleInputChange = (e) => {
 		const { value } = e.target;

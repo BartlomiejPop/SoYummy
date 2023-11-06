@@ -2,13 +2,33 @@ import emailIcon from "../../icons/email.svg";
 import { useNavigate } from "react-router-dom";
 import "./Footer.css";
 import logo from "../../icons/cultery.svg";
-import sendEmail from "../../redux/sendEmail.js";
+import { sendEmail } from "../../redux/sendEmail.js";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import Notiflix from "notiflix";
 
 export const Footer = () => {
+	const navigate = useNavigate();
+	const dispatch = useDispatch();
 	const [email, setEmail] = useState("");
 
-	const navigate = useNavigate();
+	const validateEmail = (email) => {
+		const regex = /\S+@\S+\.\S+/;
+		return regex.test(email);
+	};
+
+	const handleInputChange = (e) => {
+		const { value } = e.target;
+		setEmail(value);
+	};
+
+	const handleClick = async (e) => {
+		e.preventDefault();
+		validateEmail(email)
+			? dispatch(sendEmail(email))
+			: Notiflix.Notify.failure("incorrect email address");
+	};
+
 	return (
 		<div className="footer">
 			<div className="footerBoxesWrapper">
@@ -46,12 +66,14 @@ export const Footer = () => {
 						<img className="emailIcon" src={emailIcon} />
 						<input
 							value={email}
-							onChange={setEmail(value)}
+							onChange={handleInputChange}
 							className="footerInput"
 							placeholder="Enter your email address"
 						/>
 					</div>
-					<button className="footerButton">Subscribe</button>
+					<button className="footerButton" onClick={handleClick}>
+						Subscribe
+					</button>
 				</div>
 			</div>
 		</div>

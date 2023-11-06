@@ -1,5 +1,5 @@
-import "nodemailer";
-import "dotenv";
+import nodemailer from "nodemailer";
+import dotenv from "dotenv";
 dotenv.config();
 
 const transporter = nodemailer.createTransport({
@@ -10,7 +10,9 @@ const transporter = nodemailer.createTransport({
 	},
 });
 
-const sendEmail = (to, subject, text) => {
+const sendEmail = (to) => {
+	const subject = "Thanks";
+	const text = "xd";
 	const mailOptions = {
 		from: process.env.USER,
 		to,

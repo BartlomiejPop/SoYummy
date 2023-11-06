@@ -13,8 +13,6 @@ import { NavLink } from "react-router-dom";
 import { register } from "../redux/auth/operations.js";
 import Notiflix from "notiflix";
 
-const BASE_URL = "http://localhost:3000";
-
 export default function Register() {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
