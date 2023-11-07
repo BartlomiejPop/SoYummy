@@ -1,8 +1,34 @@
 import express from "express";
 import ctrRecipes from "../../controllers/recipes.js";
 import ctrlAuth from "../../controllers/auth.js";
+// import { upload } from "../../server.js";
+import multer from "multer";
+import path from "path";
+import fs from "fs";
 
+const uploadDir = path.join(process.cwd(), "tmp");
 const router = express.Router();
+
+const storage = multer.diskStorage({
+	destination: function (req, file, cb) {
+		cb(null, "src/uploads"); // Folder, do którego mają być zapisywane pliki
+	},
+	filename: function (req, file, cb) {
+		cb(null, file.originalname);
+	},
+	limits: {
+		fileSize: 1048576,
+	},
+});
+
+const upload = multer({ storage: storage });
+
+router.post(
+	"/addImage",
+	upload.single("image"),
+	ctrlAuth.auth,
+	ctrRecipes.addImage
+);
 
 router.post("/addRecipe", ctrlAuth.auth, ctrRecipes.create);
 
@@ -18,13 +44,6 @@ router.patch(
 	"/deleteFromFavorites/:id",
 	ctrlAuth.auth,
 	ctrRecipes.deleteFromFavorites
-);
-
-router.post(
-	"/addImage",
-	upload.upload.single("image"),
-	ctrlAuth.auth,
-	ctrRecipes.addImage
 );
 
 export default router;

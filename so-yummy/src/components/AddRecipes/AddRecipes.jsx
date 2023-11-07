@@ -11,6 +11,7 @@ export default function AddRecipes() {
 	const dispatch = useDispatch();
 	const fileInputRef = useRef(null);
 
+	const [img, setImg] = useState("");
 	const [formData, setFormData] = useState({
 		title: "",
 		about: "",
@@ -56,9 +57,12 @@ export default function AddRecipes() {
 		});
 	};
 
-	const handleFileChange = (e) => {
+	const handleFileChange = async (e) => {
 		const selectedFile = e.target.files[0];
-		addImage(selectedFile);
+		const formData = new FormData();
+		formData.append("image", selectedFile);
+		console.error(selectedFile);
+		const response = await dispatch(addImage(formData));
 	};
 
 	return (

@@ -5,28 +5,31 @@ import logger from "morgan";
 import authRouter from "./routes/api/auth.js";
 import recipesRouter from "./routes/api/recipes.js";
 import emailRouter from "./routes/api/sendEmail.js";
-import multer from "multer";
+// import multer from "multer";
 import path from "path";
-import fs from "fs";
+import { promises as fsPromises } from "fs";
 import dotenv from "dotenv";
 dotenv.config();
 
+const dbURL = process.env.DBURL;
+const port = process.env.PORT || 3000;
 const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
-const storage = multer.diskStorage({
-	destination: function (req, file, cb) {
-		cb(null, "src/uploads"); // Folder, do którego mają być zapisywane pliki
-	},
-	filename: function (req, file, cb) {
-		const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-		cb(
-			null,
-			file.fieldname + "-" + uniqueSuffix + path.extname(file.originalname)
-		);
-	},
-});
-export const upload = multer({ storage: storage });
+const uploadDir = path.join(process.cwd(), "tmp");
+
+const isAccessible = (path) => {
+	return fsPromises
+		.access(path)
+		.then(() => true)
+		.catch(() => false);
+};
+
+const createFolderIsNotExist = async (folder) => {
+	if (!(await isAccessible(folder))) {
+		await fsPromises.mkdir(folder, { recursive: true });
+	}
+};
 
 app.use(logger(formatsLogger));
 app.use(cors());
@@ -46,23 +49,20 @@ app.use((err, _, res) => {
 });
 
 try {
-	await mongoose.connect(
-		"mongodb+srv://Bartek:123@cluster0.uepqqcq.mongodb.net/",
-		{
-			dbName: "SoYummy",
-			useNewUrlParser: true,
-			useUnifiedTopology: true,
-		}
-	);
+	await mongoose.connect(dbURL, {
+		dbName: "SoYummy",
+		useNewUrlParser: true,
+		useUnifiedTopology: true,
+	});
 	console.log("Database connection successful");
 
-	app.listen(3000, () => {
-		console.log(`Server running. Use our API on port: 3000`);
+	app.listen(port, () => {
+		// createFolderIsNotExist(uploadDir);
+		// createFolderIsNotExist("src/uploads");
+		console.log(`Server running. Use our API on port: ${port}`);
 	});
 } catch (error) {
 	console.error("Cannot connect to Mongo Database");
 	console.error(error);
 	process.exit(1);
 }
-
-// export default upload;

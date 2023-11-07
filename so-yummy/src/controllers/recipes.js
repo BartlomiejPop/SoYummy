@@ -1,4 +1,6 @@
 import recipes from "../schemas/index.js";
+import path from "path";
+import fs from "fs";
 
 export const create = async (req, res, next) => {
 	const { img, title, about, category, time, ingredients, recipe } = req.body;
@@ -125,7 +127,36 @@ export const deleteFromFavorites = async (req, res, next) => {
 };
 
 export const addImage = (req, res, next) => {
-	console.error(req.body);
+	// console.error(req);
+	try {
+		// const { file } = req;
+
+		// if (!file) {
+		// 	return res.status(400).json({
+		// 		status: "Bad Request",
+		// 		message: "Avatar file is required.",
+		// 	});
+		// }
+		// const tmpDir = path.join(__dirname, "..", "tmp");
+		// const avatarsDir = path.join(__dirname, "..", "public", "avatars");
+		// const uniqueFileName = `${Date.now()}-${file.originalname}`;
+		// // const tmpFilePath = path.join(tmpDir, uniqueFileName);
+		// const avatarFilePath = path.join(avatarsDir, uniqueFileName);
+		// const tmpFilePath = path.join(tmpDir, uniqueFileName);
+		res.status(200).json({
+			status: "success",
+			data: {
+				message: "Avatar updated successfully.",
+				avatarURL: `/src/uploads/${uniqueFileName}`,
+			},
+		});
+	} catch (error) {
+		res.status(500).json({
+			status: "Internal Server Error",
+			message: "Avatar update failed.",
+			error: error.message,
+		});
+	}
 };
 
 export default {
