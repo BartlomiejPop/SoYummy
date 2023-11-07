@@ -1,5 +1,4 @@
 import "./AddRecipes.css";
-import picturePlaceholder from "../../icons/picturePlaceholder.svg";
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addRecipe, addImage } from "../../redux/recipes/operations.js";
@@ -58,9 +57,7 @@ export default function AddRecipes() {
 	};
 
 	const handleFileChange = (e) => {
-		// Obsługa zmiany pliku
 		const selectedFile = e.target.files[0];
-		// Możesz dodać tutaj kod do obsługi wybranego pliku
 		addImage(selectedFile);
 	};
 

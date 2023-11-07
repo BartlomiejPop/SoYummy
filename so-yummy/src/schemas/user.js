@@ -1,8 +1,6 @@
-// const mongoose = require("mongoose");
 import mongoose from "mongoose";
 import bCrypt from "bcryptjs";
 
-const Schema = mongoose.Schema;
 const userSchema = new mongoose.Schema({
 	password: {
 		type: String,
@@ -21,10 +19,6 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		default: null,
 	},
-	// owner: {
-	// 	type: Schema.Types.ObjectId,
-	// 	ref: "user",
-	// },
 });
 
 userSchema.methods.setPassword = function (password) {

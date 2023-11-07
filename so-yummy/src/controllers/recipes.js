@@ -1,11 +1,8 @@
-import Recipe from "../schemas/recipes.js";
 import recipes from "../schemas/index.js";
-// import service from '../schemas/index.js'
 
 export const create = async (req, res, next) => {
 	const { img, title, about, category, time, ingredients, recipe } = req.body;
 	try {
-		console.error(req.user);
 		const user = req.user._id;
 		const result = await recipes.createRecipe({
 			user,
@@ -70,7 +67,6 @@ export const remove = async (req, res, next) => {
 };
 
 export const addToFavorites = async (req, res, next) => {
-	console.error(req.body);
 	const { img, title, about, category, time, ingredients, recipe } = req.body;
 	const favorite = true;
 	try {
@@ -128,6 +124,10 @@ export const deleteFromFavorites = async (req, res, next) => {
 	}
 };
 
+export const addImage = (req, res, next) => {
+	console.error(req.body);
+};
+
 export default {
 	create,
 	get,
@@ -135,4 +135,5 @@ export default {
 	addToFavorites,
 	getFavorites,
 	deleteFromFavorites,
+	addImage,
 };

@@ -1,4 +1,3 @@
-// import pkg from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { register, login } from "./operations.js";
 
@@ -44,7 +43,6 @@ const authSlice = createSlice({
 			state.error = action.payload;
 		},
 		[login.fulfilled](state, action) {
-			console.error(action.payload);
 			state.user = action.payload.data.user;
 			state.token = action.payload.data.token;
 			state.isLoggedIn = true;

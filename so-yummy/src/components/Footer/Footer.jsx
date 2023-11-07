@@ -27,6 +27,7 @@ export const Footer = () => {
 		validateEmail(email)
 			? dispatch(sendEmail(email))
 			: Notiflix.Notify.failure("incorrect email address");
+		setEmail("");
 	};
 
 	return (

@@ -1,11 +1,9 @@
-// const mongoose = require("mongoose");
 import mongoose from "mongoose";
 const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema({
 	user: {
 		type: Schema.Types.ObjectId,
-		// ref: "user",
 	},
 	image: { src: String },
 	title: {

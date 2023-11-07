@@ -5,7 +5,7 @@ import passport from "../config/config-passport.js";
 // const passport = require("../config/config-passport");
 // const User = require("../service/schemas/user");
 
-const secret = "secret";
+const secret = process.env.SECRET;
 
 const auth = (req, res, next) => {
 	passport.authenticate("jwt", (err, user) => {

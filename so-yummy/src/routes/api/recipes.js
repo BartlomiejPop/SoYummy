@@ -2,10 +2,6 @@ import express from "express";
 import ctrRecipes from "../../controllers/recipes.js";
 import ctrlAuth from "../../controllers/auth.js";
 
-// const ctrlAuth = require("../../redux/auth/operations.js");
-// const BASE_URL = "http://localhost:3000";
-// import { registerUser } from "../../redux/auth/slice";
-
 const router = express.Router();
 
 router.post("/addRecipe", ctrlAuth.auth, ctrRecipes.create);
@@ -22,6 +18,13 @@ router.patch(
 	"/deleteFromFavorites/:id",
 	ctrlAuth.auth,
 	ctrRecipes.deleteFromFavorites
+);
+
+router.post(
+	"/addImage",
+	upload.upload.single("image"),
+	ctrlAuth.auth,
+	ctrRecipes.addImage
 );
 
 export default router;

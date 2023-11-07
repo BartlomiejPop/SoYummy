@@ -1,9 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import Notiflix from "notiflix";
-// import dotenv from "dotenv";
-// dotenv.config();
-// import upload from "../../app.js";
 
 const setAuthToken = (token) => {
 	if (token) {
@@ -98,9 +95,7 @@ export const deleteRecipe = createAsyncThunk(
 	}
 );
 
-export const addImage = (image) => {
-	console.error(image);
-};
+export const addImage = (image) => {};
 
 export const getRecipe = (title) => (dispatch, getState) => {
 	const state = getState();

@@ -3,22 +3,13 @@ import { useDispatch } from "react-redux";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import Notiflix from "notiflix";
-// import { RegisterForm } from "components/RegisterForm/RegisterForm";
 import image from "../images/registerImage.png";
 import bg from "../images/registerBg.png";
 import "./loginRegister.css";
 import emailIcon from "../icons/email.svg";
 import passwordIcon from "../icons/password.svg";
 import { NavLink } from "react-router-dom";
-import { loginUser, loginUserError } from "../redux/auth/slice.js";
 import { login } from "../redux/auth/operations.js";
-// import { authApi } from "../../api/auth.services";
-import { authApi } from "../routes/api/services.js";
-// import User from "../schemas/user.js";
-// import jwt from "jsonwebtoken";
-// const secret = "secret";
-import { setUsername } from "../redux/auth/slice.js";
-const BASE_URL = "http://localhost:3000";
 
 export default function Login() {
 	const dispatch = useDispatch();

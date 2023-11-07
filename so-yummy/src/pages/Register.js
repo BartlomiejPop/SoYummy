@@ -1,5 +1,4 @@
 import { Helmet } from "react-helmet";
-// import { RegisterForm } from "components/RegisterForm/RegisterForm";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import image from "../images/registerImage.png";
@@ -9,7 +8,6 @@ import userIcon from "../icons/user.svg";
 import emailIcon from "../icons/email.svg";
 import passwordIcon from "../icons/password.svg";
 import { NavLink } from "react-router-dom";
-// import { setUsername } from "../redux/auth/slice.js";
 import { register } from "../redux/auth/operations.js";
 import Notiflix from "notiflix";
 
@@ -21,21 +19,6 @@ export default function Register() {
 		const regex = /\S+@\S+\.\S+/;
 		return regex.test(email);
 	};
-
-	// const handleSubmit = async (e) => {
-	// 	e.preventDefault();
-	// 	const response = await dispatch(
-	// 		login({
-	// 			password,
-	// 			email,
-	// 		})
-	// 	);
-	// 	form.reset();
-	// 	const shouldRedirect = response.payload.status === "success";
-	// 	shouldRedirect
-	// 		? navigate("/home")
-	// 		: Notiflix.Notify.failure("Wrong email or password");
-	// };
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
