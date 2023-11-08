@@ -6,8 +6,6 @@ import authRouter from "./routes/api/auth.js";
 import recipesRouter from "./routes/api/recipes.js";
 import emailRouter from "./routes/api/sendEmail.js";
 import bodyParser from "body-parser";
-import multer from "multer";
-import path from "path";
 import { promises as fsPromises } from "fs";
 import dotenv from "dotenv";
 dotenv.config();
@@ -16,8 +14,6 @@ const dbURL = process.env.DBURL;
 const port = process.env.PORT || 3000;
 const app = express();
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
-
-const uploadDir = path.join(process.cwd(), "tmp");
 
 const isAccessible = (path) => {
 	return fsPromises
@@ -60,7 +56,6 @@ try {
 	console.log("Database connection successful");
 
 	app.listen(port, () => {
-		createFolderIsNotExist(uploadDir);
 		createFolderIsNotExist("src/uploads");
 		console.log(`Server running. Use our API on port: ${port}`);
 	});

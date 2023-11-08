@@ -1,9 +1,6 @@
-// const jwt = require("jsonwebtoken");
 import User from "../schemas/user.js";
 import jwt from "jsonwebtoken";
 import passport from "../config/config-passport.js";
-// const passport = require("../config/config-passport");
-// const User = require("../service/schemas/user");
 
 const secret = process.env.SECRET;
 

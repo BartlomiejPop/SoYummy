@@ -1,10 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { register, login } from "./operations.js";
 
-// const { createSlice } = pkg;
-
-// const { createSlice } = require("@reduxjs/toolkit");
-
 const initialState = {
 	user: { email: null },
 	token: null,
@@ -31,10 +27,7 @@ const authSlice = createSlice({
 	},
 	extraReducers: {
 		[register.fulfilled](state, action) {
-			// state.user = action.payload.data.user;
-			// state.token = action.payload.data.token;
-			// state.isLoggedIn = true;
-			// state.error = null;
+			state.error = null;
 		},
 		[register.rejected](state, action) {
 			state.error = action.payload;
@@ -45,23 +38,12 @@ const authSlice = createSlice({
 			state.isLoggedIn = true;
 			state.error = null;
 		},
-		// [logOut.fulfilled](state) {
-		// 	state.user = { name: null, email: null };
-		// 	state.token = null;
-		// 	state.isLoggedIn = false;
-		// },
-		// [refreshUser.pending](state) {
-		// 	state.isRefreshing = true;
-		// },
-		// [refreshUser.fulfilled](state, action) {
-		// 	state.user = action.payload;
-		// 	state.isLoggedIn = true;
-		// 	state.isRefreshing = false;
-		// 	state.error = null;
-		// },
-		// [refreshUser.rejected](state) {
-		// 	state.isRefreshing = false;
-		// },
+		[login.rejected](state, action) {
+			state.user = null;
+			state.error = action.payload;
+			state.token = null;
+			state.isLoggedIn = false;
+		},
 	},
 });
 

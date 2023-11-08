@@ -1,27 +1,14 @@
-// import { registerUser } from "./slice.js";
-// import { setUsername } from "./slice.js";
-// const { registerUser } = require("./slice.mjs");
-// import dotenv from "dotenv";
-import { Navigate, useNavigate } from "react-router";
 import Notiflix from "notiflix";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
-// import dotenv from "dotenv";
-// dotenv.config();
 
-// import dotenv from "dotenv";
-// dotenv.config();
-
-// const port = process.env.PORT || 3000;
+const baseURL = "http://localhost:3000";
 
 export const register = createAsyncThunk(
 	"register",
 	async (userData, thunkAPI) => {
 		try {
-			const response = await axios.post(
-				`http://localhost:3000/register`,
-				userData
-			);
+			const response = await axios.post(`${baseURL}/register`, userData);
 			return response.data;
 		} catch (error) {
 			if (error.response && error.response.status === 409) {
@@ -39,7 +26,7 @@ export const register = createAsyncThunk(
 
 export const login = createAsyncThunk("login", async (userData, thunkAPI) => {
 	try {
-		const response = await axios.post(`http://localhost:3000/login`, userData);
+		const response = await axios.post(`${baseURL}/login`, userData);
 		return response.data;
 	} catch (error) {
 		if (error.response && error.response.status === 401) {

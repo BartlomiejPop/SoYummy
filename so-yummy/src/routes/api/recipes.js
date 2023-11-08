@@ -1,17 +1,13 @@
 import express from "express";
 import ctrRecipes from "../../controllers/recipes.js";
 import ctrlAuth from "../../controllers/auth.js";
-// import { upload } from "../../server.js";
 import multer from "multer";
-import path from "path";
-import fs from "fs";
 
-const uploadDir = path.join(process.cwd(), "tmp");
 const router = express.Router();
 
 const storage = multer.diskStorage({
 	destination: function (req, file, cb) {
-		cb(null, "src/uploads"); // Folder, do którego mają być zapisywane pliki
+		cb(null, "src/uploads");
 	},
 	filename: function (req, file, cb) {
 		cb(null, file.originalname);
