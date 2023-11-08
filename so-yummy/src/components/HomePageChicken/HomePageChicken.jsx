@@ -15,7 +15,7 @@ export const HomePageChicken = () => {
 				{recipes.slice(0, 4).map((el, index) => (
 					<li className="HomeRecipesListItem" key={index}>
 						<img
-							src={el.picture}
+							src={el.img}
 							alt={`Recipe ${index + 1}`}
 							onClick={() => {
 								navigate(`/recipe/${el.title}`);

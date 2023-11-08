@@ -2,17 +2,24 @@ import "./AddRecipes.css";
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { addRecipe, addImage } from "../../redux/recipes/operations.js";
-import img from "../../images/ownRecipeImg.jpg";
+import placeholder from "../../icons/picturePlaceholder.svg";
+// import example from "../../uploads/IcecreamBg.png";
 // import { upload } from "../../server.js";
 // import { addImage } from "../../controllers/recipes.js";
+import Loader from "../Loader/Loader.jsx";
+import { useSelector } from "react-redux";
+import { selectIsLoading } from "../../redux/recipes/selectors.js";
 
 export default function AddRecipes() {
 	window.scrollTo(0, 0);
 	const dispatch = useDispatch();
 	const fileInputRef = useRef(null);
+	const imageRef = useRef(null);
+	const isLoading = useSelector(selectIsLoading);
 
 	const [img, setImg] = useState("");
 	const [formData, setFormData] = useState({
+		img: "",
 		title: "",
 		about: "",
 		category: "",
@@ -33,7 +40,7 @@ export default function AddRecipes() {
 
 		dispatch(
 			addRecipe({
-				img: "",
+				img: img,
 				title: title,
 				about: about,
 				category: category,
@@ -58,82 +65,111 @@ export default function AddRecipes() {
 	};
 
 	const handleFileChange = async (e) => {
+		const isImageFile = (file) => {
+			const allowedExtensions = ["jpg", "jpeg", "png", "gif"];
+			const fileExtension = file.name.split(".").pop().toLowerCase();
+			return allowedExtensions.includes(fileExtension);
+		};
+
 		const selectedFile = e.target.files[0];
-		const formData = new FormData();
-		formData.append("image", selectedFile);
-		console.error(selectedFile);
-		const response = await dispatch(addImage(formData));
+		if (selectedFile && isImageFile(selectedFile)) {
+			const formData = new FormData();
+			formData.append("file", selectedFile);
+
+			const response = await dispatch(addImage(formData));
+			if (response) {
+				setImg(response.payload.data.avatarURL);
+			}
+
+			const reader = new FileReader();
+			reader.onloadend = () => {
+				const imageSrc = reader.result;
+				imageRef.current.src = imageSrc;
+			};
+			reader.readAsDataURL(selectedFile);
+		} else {
+			alert("Please select a valid image file (jpg, jpeg, png, gif).");
+			e.target.value = null;
+		}
 	};
 
 	return (
-		<div className="addRecipes">
-			<h1 className="addRecipesTitle"> ADD RECIPE</h1>
-			<div className="addRecipesWrapper">
-				<div className="addRecipesDescription">
-					<form className="addRecipesForm" onSubmit={handleSubmit}>
-						<div className="addRecipesImage" onClick={handleImageClick}>
-							<img src={img} className="addRecipesIcon" />
-							<input
-								type="file"
-								name="image"
-								ref={fileInputRef}
-								style={{ display: "none" }}
-								onChange={handleFileChange}
-							/>
-						</div>
-						<div className="addRecipesInputBox">
-							<input
-								required
-								name="title"
-								className="formItem"
-								placeholder="Entern recipe title"
-								value={formData.name}
-								onChange={handleInputChange}
-							/>
-							<input
-								required
-								name="about"
-								className="formItem"
-								placeholder="Enter about recipe"
-								value={formData.about}
-								onChange={handleInputChange}
-							/>
-							<input
-								required
-								name="category"
-								className="formItem"
-								placeholder="Enter category"
-								value={formData.category}
-								onChange={handleInputChange}
-							/>
-							<input
-								name="time"
-								className="formItem"
-								placeholder="Preparation time"
-								value={formData.time}
-								onChange={handleInputChange}
-							/>
-						</div>
-						<div className="addRecipesTextareaBox">
-							<div className="addRecipesTextareaWrapper">
-								<textarea
-									name="ingredients"
-									placeholder="Enter ingredients"
-									className="addRecipesTextarea"
-									value={formData.ingredients}
-									onChange={handleInputChange}></textarea>
-								<textarea
-									name="recipe"
-									placeholder="Enter recipe"
-									className="addRecipesTextarea"
-									value={formData.recipe}
-									onChange={handleInputChange}></textarea>
+		<div>
+			{isLoading && <Loader />}
+			<div className="addRecipes">
+				<h1 className="addRecipesTitle"> ADD RECIPE</h1>
+				<div className="addRecipesWrapper">
+					<div className="addRecipesDescription">
+						<form className="addRecipesForm" onSubmit={handleSubmit}>
+							<div className="addRecipesImage" onClick={handleImageClick}>
+								<img
+									name="selectedImage"
+									src={placeholder}
+									className="addRecipesIcon"
+									ref={imageRef}
+								/>
+								<input
+									type="file"
+									name="image"
+									ref={fileInputRef}
+									style={{ display: "none" }}
+									onChange={handleFileChange}
+								/>
 							</div>
-							<div className="addRecipesButtonBox">
-								<button className="addRecipesButton">Add</button>
+							<div className="addRecipesInputBox">
+								<input
+									required
+									name="title"
+									className="formItem"
+									placeholder="Entern recipe title"
+									value={formData.name}
+									onChange={handleInputChange}
+								/>
+								<input
+									required
+									name="about"
+									className="formItem"
+									placeholder="Enter about recipe"
+									value={formData.about}
+									onChange={handleInputChange}
+								/>
+								<input
+									required
+									name="category"
+									className="formItem"
+									placeholder="Enter category"
+									value={formData.category}
+									onChange={handleInputChange}
+								/>
+								<input
+									name="time"
+									className="formItem"
+									placeholder="Preparation time"
+									value={formData.time}
+									onChange={handleInputChange}
+								/>
 							</div>
-						</div>
-					</form>
+							<div className="addRecipesTextareaBox">
+								<div className="addRecipesTextareaWrapper">
+									<textarea
+										name="ingredients"
+										placeholder="Enter ingredients"
+										className="addRecipesTextarea"
+										value={formData.ingredients}
+										onChange={handleInputChange}></textarea>
+									<textarea
+										name="recipe"
+										placeholder="Enter recipe"
+										className="addRecipesTextarea"
+										value={formData.recipe}
+										onChange={handleInputChange}></textarea>
+								</div>
+								<div className="addRecipesButtonBox">
+									<button className="addRecipesButton">Add</button>
+								</div>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>

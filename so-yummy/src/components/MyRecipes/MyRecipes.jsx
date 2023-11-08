@@ -4,7 +4,10 @@ import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux/es/hooks/useSelector";
-import { selectMyRecipes } from "../../redux/recipes/selectors";
+import {
+	selectIsLoading,
+	selectMyRecipes,
+} from "../../redux/recipes/selectors";
 // import getMyRecipes from "../../schemas/index.js";
 import { useDispatch } from "react-redux";
 import { addRecipe } from "../../redux/recipes/operations.js";
@@ -14,27 +17,32 @@ import photo from "../../images/appleFrangipanTort.png";
 import trashIcon from "../../icons/trash.svg";
 import { deleteRecipe } from "../../redux/recipes/operations.js";
 import img from "../../images/ownRecipeImg.jpg";
+import Loader from "../Loader/Loader.jsx";
 
 export const MyRecipes = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const recipes = useSelector(selectMyRecipes);
+	const isLoading = useSelector(selectIsLoading);
 	// dispatch(getMyRecipes);
 	useEffect(() => {
 		dispatch(getMyRecipes());
 	}, [dispatch]);
 
 	const handleDelete = (id) => dispatch(deleteRecipe(id));
-
+	// return isRefreshing ? (
+	// 	<b>Refreshing user...</b>
+	// ) : (
 	return (
 		<div>
+			{isLoading && <Loader />}
 			<h1 className="myRecipesTitle">My recipes</h1>
 			<ul className="myRecipesList">
 				{recipes.map((el, index) => (
 					<li className="myRecipesItem" key={index}>
 						<img
 							className="myRecipesImage"
-							src={img}
+							src={el.img || img}
 							alt={`Recipe ${index + 1}`}
 						/>
 						<div className="myRecipesContent">

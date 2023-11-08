@@ -19,7 +19,7 @@ export const CategoriesResults = () => {
 					recipes.map((el, index) => (
 						<li className="CategoriesResultItem" key={index}>
 							<img
-								src={el.picture}
+								src={el.img}
 								alt={el.name}
 								onClick={() => {
 									navigate(`/recipe/${el.title}`);

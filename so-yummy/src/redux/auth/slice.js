@@ -7,7 +7,7 @@ import { register, login } from "./operations.js";
 
 const initialState = {
 	user: { email: null },
-	// token: null,
+	token: null,
 	isLoggedIn: false,
 	isRefreshing: false,
 	error: null,
@@ -28,9 +28,6 @@ const authSlice = createSlice({
 		setUsername: (state, action) => {
 			state.user = action.payload;
 		},
-		// setUsername: (state, action) => {
-		// 	state.username = action.payload;
-		// },
 	},
 	extraReducers: {
 		[register.fulfilled](state, action) {

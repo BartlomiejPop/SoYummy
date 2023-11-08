@@ -1,6 +1,12 @@
 import recipes from "../schemas/index.js";
 import path from "path";
 import fs from "fs";
+import Jimp from "Jimp";
+import { fileURLToPath } from "url";
+import { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 export const create = async (req, res, next) => {
 	const { img, title, about, category, time, ingredients, recipe } = req.body;
@@ -126,20 +132,31 @@ export const deleteFromFavorites = async (req, res, next) => {
 	}
 };
 
-export const addImage = (req, res, next) => {
-	// console.error(req);
+export const addImage = async (req, res, next) => {
 	try {
-		// const { file } = req;
+		const { file } = req;
 
-		// if (!file) {
-		// 	return res.status(400).json({
-		// 		status: "Bad Request",
-		// 		message: "Avatar file is required.",
-		// 	});
-		// }
+		if (!file) {
+			return res.status(400).json({
+				status: "Bad Request",
+				message: "Avatar file is required.",
+			});
+		}
+		const tmpDir = path.join(__dirname, "..", "tmp");
+		const avatarsDir = path.join(__dirname, "..", "..", "public", "avatars");
+		const uniqueFileName = `${Date.now()}-${file.originalname}`;
+		const tmpFilePath = path.join(tmpDir, uniqueFileName);
+		const avatarFilePath = path.join(avatarsDir, uniqueFileName);
+		const avatar = await Jimp.read(file.path);
+		avatar.resize(250, 250).quality(80);
+		await avatar.writeAsync(tmpFilePath);
+		fs.renameSync(tmpFilePath, avatarFilePath);
 		// const tmpDir = path.join(__dirname, "..", "tmp");
 		// const avatarsDir = path.join(__dirname, "..", "public", "avatars");
 		// const uniqueFileName = `${Date.now()}-${file.originalname}`;
+		// const avatar = await Jimp.read(file.path);
+		// avatar.resize(250, 250).quality(80);
+		// await avatar.writeAsync(uniqueFileName);
 		// // const tmpFilePath = path.join(tmpDir, uniqueFileName);
 		// const avatarFilePath = path.join(avatarsDir, uniqueFileName);
 		// const tmpFilePath = path.join(tmpDir, uniqueFileName);
@@ -147,7 +164,7 @@ export const addImage = (req, res, next) => {
 			status: "success",
 			data: {
 				message: "Avatar updated successfully.",
-				avatarURL: `/src/uploads/${uniqueFileName}`,
+				avatarURL: `avatars/${uniqueFileName}`,
 			},
 		});
 	} catch (error) {

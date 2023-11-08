@@ -7,8 +7,13 @@ import { useDispatch } from "react-redux";
 import { getRecipe } from "../../redux/recipes/operations";
 import { useState } from "react";
 import { addToFavorites } from "../../redux/recipes/operations";
+import Notiflix from "notiflix";
+import Loader from "../Loader/Loader";
+import { selectIsLoading } from "../../redux/recipes/selectors";
+import { useSelector } from "react-redux/es/hooks/useSelector";
 
 export const Recipe = () => {
+	const isLoading = useSelector(selectIsLoading);
 	const { title } = useParams();
 	const dispatch = useDispatch();
 	const [recipeEl, setRecipeEl] = useState(null);
@@ -19,7 +24,7 @@ export const Recipe = () => {
 				const recipeData = await dispatch(getRecipe(title));
 				setRecipeEl(recipeData);
 			} catch (error) {
-				console.error(error);
+				Notiflix.Notify.failure(error);
 			}
 		};
 		fetchRecipe();
@@ -36,6 +41,7 @@ export const Recipe = () => {
 
 	return (
 		<div className="recipe">
+			{isLoading && <Loader />}
 			<h1 className="recipeTitle">{recipeEl.title}</h1>
 			<div className="recipeContentBox">
 				<div className="recipeBox">

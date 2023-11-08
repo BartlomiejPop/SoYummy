@@ -46,11 +46,9 @@ export const Footer = () => {
 					</div>
 					<ul className="footerDescriptionList">
 						<li key="footerList1">
-							Database of recipes that can be replenished{" "}
+							Database of recipes that can be saved in favorites
 						</li>
-						<li key="footerList2">
-							Flexible search for desired and unwanted ingredients
-						</li>
+						<li key="footerList2">Flexible search for desired recipes</li>
 						<li key="footerList3">
 							Ability to add your own recipes with photos
 						</li>

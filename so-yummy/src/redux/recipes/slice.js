@@ -62,7 +62,7 @@ const initialState = {
 		breakfast: [
 			{
 				title: "Banana pancakes",
-				picture: bananaPancakes,
+				img: bananaPancakes,
 				about:
 					"Fluffy on the inside, crispy on the outside and delicately flavored with bananas, these are phenomenal banana pancakes.",
 				time: "20min",
@@ -73,7 +73,7 @@ const initialState = {
 			},
 			{
 				title: "Ham hock colcannon",
-				picture: hamHockColcannon,
+				img: hamHockColcannon,
 				about:
 					"Creamy, comforting mash with garlic and double cream, chunks of ham hock and shredded Savoy cabbage. Serve a bowlful topped with a runny fried egg",
 				time: "40min",
@@ -82,7 +82,7 @@ const initialState = {
 			},
 			{
 				title: "Polish pancakes",
-				picture: polishPancakes,
+				img: polishPancakes,
 				about:
 					"Naleśniki (already plural) are Polish-style thin pancakes, often filled with sweet or savoury fillings. They can be rolled up or folded.",
 				time: "15 minutes",
@@ -93,7 +93,7 @@ const initialState = {
 			},
 			{
 				title: "Boxty breakfast",
-				picture: boxtyBreakfast,
+				img: boxtyBreakfast,
 				about:
 					"Boxty are potato pancakes. The savory pancakes consist of potatoes, flour, eggs, milk, and seasonings shaped into patties and fried in oil. ",
 				time: "30 mins",
@@ -104,7 +104,7 @@ const initialState = {
 			},
 			{
 				title: "French omlette",
-				picture: frenchOmlette,
+				img: frenchOmlette,
 				about:
 					"The French omelette looms large in kitchen legend, and the story you'll most often hear is that it was the dish chefs would use to test prospective cooks. ",
 				time: "10 mins",
@@ -115,7 +115,7 @@ const initialState = {
 			},
 			{
 				title: "English breakfast",
-				picture: englishBreakfast,
+				img: englishBreakfast,
 				about:
 					"The 'common' full English breakfast is a substantial meal consisting of back bacon, eggs, British sausage, baked beans, bubble and squeak, fried tomato, fried mushrooms, black pudding, with fried and toasted bread on the side.",
 				time: "35 minutes.",
@@ -126,7 +126,7 @@ const initialState = {
 			},
 			{
 				title: "Cheese sandwich",
-				picture: cheeseSandwich,
+				img: cheeseSandwich,
 				about:
 					"A cheese sandwich is a sandwich made with cheese on bread. Typically semi-hard cheeses are used for the filling, such as Cheddar, Red Leicester, or Double Gloucester",
 				time: " 3 to 4 mins",
@@ -138,7 +138,7 @@ const initialState = {
 		miscellaneous: [
 			{
 				title: "Portugese custard tarts",
-				picture: portugeseCustardTarts,
+				img: portugeseCustardTarts,
 				about:
 					"Pastel de nata, (or, the plural, pasteis de nata) are quintessentially Portuguese custard tarts with a baked cream and egg yolk custard centre, a buttery puff pastry shell and a golden, caramelised top.",
 				time: "4 hrs",
@@ -149,7 +149,7 @@ const initialState = {
 			},
 			{
 				title: "Portugese prego por",
-				picture: portugesePregoPor,
+				img: portugesePregoPor,
 				about:
 					"Prego is a ubiquitous Portuguese sandwich prepared with thin slices of beef that are seasoned with garlic, fried, sautéed alongside onions and wine, then placed inside a bread roll.",
 				time: "2h",
@@ -160,7 +160,7 @@ const initialState = {
 			},
 			{
 				title: "Stuffed lamb tomatoes",
-				picture: stuffedLambTomatoes,
+				img: stuffedLambTomatoes,
 				about:
 					"These juicy tomatoes improve in flavour if cooked the day before you serve them. You can easily make them veggie too",
 				time: "45 mins",
@@ -171,7 +171,7 @@ const initialState = {
 			},
 			{
 				title: "Salmon eggs benedict",
-				picture: salmonEggsBenedict,
+				img: salmonEggsBenedict,
 				about:
 					"Salmon eggs are rich in essential nutrients, low in calories, and recommended as part of a healthy diet. Including salmon in a balanced diet can help decrease the chances of heart disease, ease inflammation, and more. ",
 				time: "40min",
@@ -188,7 +188,7 @@ const initialState = {
 		chicken: [
 			{
 				title: "Teriyaki chicken casserole",
-				picture: teriyakiChickenCasserole,
+				img: teriyakiChickenCasserole,
 				about:
 					"Teriyaki Chicken Casserole is full of savory chicken, rice and vegetables. The teriyaki sauce gives it outstanding flavor. This delicious meal is one your family will love!",
 				time: "1h",
@@ -199,7 +199,7 @@ const initialState = {
 			},
 			{
 				title: "Chicken Alfredo Primavera",
-				picture: chickenAlfredoPrimavera,
+				img: chickenAlfredoPrimavera,
 				about:
 					"Chicken primavera Alfredo features sautéed chicken, mushrooms, and green and red peppers in a rich Alfredo sauce.",
 				time: "30 mins",
@@ -210,7 +210,7 @@ const initialState = {
 			},
 			{
 				title: "Potato gratin with chicken",
-				picture: potatoGratinWithChicken,
+				img: potatoGratinWithChicken,
 				about:
 					"You can call it a gratin, a dauphinoise, a casserole, or whatever you’d like, we just know it’s darn delicious. Chicken, thinly sliced potatoes, and onions are blanketed in a creamy sauce that’s absolutely amazing. It’s a little bit addictive; it’s a dish that makes it nearly impossible to stop after the first serving. (But there are worse problems to have.)",
 				time: "1 hour 20 minutes",
@@ -221,7 +221,7 @@ const initialState = {
 			},
 			{
 				title: "Piri-piri chicken and slaw",
-				picture: piriPiriChickenAndSlaw,
+				img: piriPiriChickenAndSlaw,
 				about:
 					"Create your own Portuguese-style chicken, chips and slaw at home. Tip all of the spicy roasting tin juices into a bowl to serve alongside",
 				time: "1,5h",
@@ -234,7 +234,7 @@ const initialState = {
 		desserts: [
 			{
 				title: "Blackberry fool",
-				picture: blackberryFool,
+				img: blackberryFool,
 				about:
 					"Whipping up this dessert may be the wisest decision you’ll make in the summer: It comes together quickly and uses only five ingredients. Mashed juicy berries folded into lightly whipped cream results in a simple dish that manages to feel both decadent and light. ",
 				time: "20min",
@@ -245,7 +245,7 @@ const initialState = {
 			},
 			{
 				title: "Choc Chip Pecan Pie",
-				picture: chocChipPecanPie,
+				img: chocChipPecanPie,
 				about:
 					"An indulgent chocolate and pecan treat with buttery pastry and a gooey filling everybody can get stuck into",
 				time: "2h",
@@ -256,7 +256,7 @@ const initialState = {
 			},
 			{
 				title: "Raspbery brownies",
-				picture: raspberyBrownies,
+				img: raspberyBrownies,
 				about:
 					"Squidgy and super moreish, these gorgeous foolproof fruity chocolate bakes will be snapped up in seconds",
 				time: "1h",
@@ -267,7 +267,7 @@ const initialState = {
 			},
 			{
 				title: "Christmas Pudding Trifle",
-				picture: christmasPuddingTrifle,
+				img: christmasPuddingTrifle,
 				about:
 					"Use leftover Christmas pudding to rustle up this speedy and sumptuously creamy trifle with Grand Marnier-steeped oranges",
 				time: "15min",
@@ -278,7 +278,7 @@ const initialState = {
 			},
 			{
 				title: "Apple frangipan tort",
-				picture: appleFrangipanTort,
+				img: appleFrangipanTort,
 				about:
 					"With a base of crushed biscuits, rather than pastry, this tart is quick to make – no need for any rolling out or baking blind. The apple and almond go so well together too. Make it a day ahead then just reheat it when you are ready to serve.",
 				time: "50min",
@@ -289,7 +289,7 @@ const initialState = {
 			},
 			{
 				title: "New york cheescake",
-				picture: newYorkCheescake,
+				img: newYorkCheescake,
 				about:
 					"This authentic creamy dessert will add a taste of New York to any dining table. Our American-style baked cheesecake recipe makes an easy family dessert.",
 				time: "2h",
@@ -300,7 +300,7 @@ const initialState = {
 			},
 			{
 				title: "sugar pie",
-				picture: sugarPie,
+				img: sugarPie,
 				about:
 					"Sugar pie is a dessert in northern French and Belgiancuisine, where it is called tarte au sucre. It is also popular in Canada.",
 				time: "1h",
@@ -313,7 +313,7 @@ const initialState = {
 		beef: [
 			{
 				title: "Beef And Mustard Pie",
-				picture: beefAndMustardPie,
+				img: beefAndMustardPie,
 				about:
 					"Slow cooked beef makes a wonderful filling for pie. Prepare the meat stew ahead and assemble the pie when you’re ready to cook it.",
 				time: "50min",
@@ -324,7 +324,7 @@ const initialState = {
 			},
 			{
 				title: "Braised beed chilli",
-				picture: braisedBeefChilli,
+				img: braisedBeefChilli,
 				about:
 					"Ancho chillies, dark chocolate and paprika add wonderful flavours to this slow-cooked beef chilli. Serve it with fresh bean salsa for an impressive one-pot dish.",
 				time: "50min",
@@ -335,7 +335,7 @@ const initialState = {
 			},
 			{
 				title: "General Tsos Chicken",
-				picture: generalTsosChicken,
+				img: generalTsosChicken,
 				about:
 					"This is a popular Chinese-American dish that appears in suburban Chinese restaurants here in Australia under various other guises. Peking-Style Chicken or sometimes something mysteriously titled House Special Crispy Chicken. I can never resist a House Special! ",
 				time: "50 mins",
@@ -346,7 +346,7 @@ const initialState = {
 			},
 			{
 				title: "Beef lo mein",
-				picture: beefLoMein,
+				img: beefLoMein,
 				about:
 					"Lo mein might already be one of your go-tos when ordering Chinese takeout. Skip spending money and make this dish at home in only 30 minutes! ",
 				time: "30 mins",
@@ -357,7 +357,7 @@ const initialState = {
 			},
 			{
 				title: "Beef brisket pot roast",
-				picture: beefBrisketPotRoast,
+				img: beefBrisketPotRoast,
 				about:
 					"Follow our recipe to learn how to cook brisket in beer, resulting in a richer flavour and beautifully tender texture. Serve with mash, parsnips and mushrooms to soak up the gravy",
 				time: "2,5h",
@@ -368,7 +368,7 @@ const initialState = {
 			},
 			{
 				title: "Beef brisket pot",
-				picture: beefBrisketPot,
+				img: beefBrisketPot,
 				about:
 					"Follow our recipe to learn how to cook brisket in beer, resulting in a richer flavour and beautifully tender texture. Serve with mash, parsnips and mushrooms to soak up the gravy",
 				time: "2,5h",
@@ -379,7 +379,7 @@ const initialState = {
 			},
 			{
 				title: "Beef sunday roast",
-				picture: beefSundayRoast,
+				img: beefSundayRoast,
 				about:
 					"This easy roast beef recipe with carrots and a simple gravy is ideal for a stunning Sunday dinner for the family. It takes just 15 minutes to prepare.",
 				time: "1,5h",
@@ -390,7 +390,7 @@ const initialState = {
 			},
 			{
 				title: "Beef dumpling stew",
-				picture: beefDumplingStew,
+				img: beefDumplingStew,
 				about:
 					"For the coldest wintry evenings, tuck into a rich beef stew with fluffy dumplings to warm you right down to your toes.",
 				time: "2h",
@@ -401,7 +401,7 @@ const initialState = {
 			},
 			{
 				title: "Beef dumpling",
-				picture: beefDumpling,
+				img: beefDumpling,
 				about:
 					"These Northern Chinese style beef dumplings with scallions are super flavorful. They’re particularly good when you make your own wrappers and boil the dumplings, which allows you to really appreciate how juicy they are! ",
 				time: "1h",
@@ -412,7 +412,7 @@ const initialState = {
 			},
 			{
 				title: "Beef wellington",
-				picture: beefWellington,
+				img: beefWellington,
 				about:
 					"Gordon Ramsay's version of the classic steak dish – a showstopping centrepiece on a special occasion",
 				time: "2,5h",
@@ -425,7 +425,7 @@ const initialState = {
 		seafood: [
 			{
 				title: "Sushi",
-				picture: sushi,
+				img: sushi,
 				about:
 					"Sushi rolls can be filled with any ingredients you choose. Try smoked salmon instead of imitation crabmeat. Serve with teriyaki sauce and wasabi.",
 				time: "1 hr 5 mins",
@@ -438,7 +438,7 @@ const initialState = {
 		pasta: [
 			{
 				title: "Squash linguine",
-				picture: squashLinguine,
+				img: squashLinguine,
 				about:
 					"Pasta is a type of food typically made from an unleavened dough of wheat  flour mixed with water or eggs, and formed into sheets or other shapes, then cooked by boiling or baking.",
 				time: "1h",
@@ -452,16 +452,18 @@ const initialState = {
 	myRecipes: [],
 	favoriteRecipes: [],
 	searchedRecipes: [],
+	isLoading: false,
+	error: null,
 };
 
-// const handlePending = (state) => {
-// 	state.isLoading = true;
-// };
+const handlePending = (state) => {
+	state.isLoading = true;
+};
 
-// const handleRejected = (state, action) => {
-// 	state.isLoading = false;
-// 	state.error = action.payload;
-// };
+const handleRejected = (state, action) => {
+	state.isLoading = false;
+	state.error = action.payload;
+};
 
 const recipesSlice = createSlice({
 	name: "recipes",
@@ -493,40 +495,57 @@ const recipesSlice = createSlice({
 		},
 	},
 	extraReducers: {
-		// [addRecipe.pending]: handlePending,
+		[addRecipe.pending]: handlePending,
 		[addRecipe.fulfilled](state, action) {
 			state.myRecipes.push(action.payload);
-			// state.isLoading = false;
-			// state.error = null;
-			// if (state.filter !== "") {
-			// 	state.filter.push(action.payload);
-			// }
+			state.isLoading = false;
+			state.error = null;
 		},
+		[addRecipe.rejected]: handleRejected,
 
+		[getMyRecipes.pending]: handlePending,
 		[getMyRecipes.fulfilled](state, action) {
 			state.myRecipes = action.payload;
+			state.isLoading = false;
+			state.error = null;
 		},
+		[getMyRecipes.rejected]: handleRejected,
+
+		[getFavorites.pending]: handlePending,
 		[getFavorites.fulfilled](state, action) {
-			// const recipes = action.payload;
-			// const favoriteRecipes = recipes.filter((el) => el.favorite === true);
 			state.favoriteRecipes = action.payload;
+			state.isLoading = false;
+			state.error = null;
 		},
+		[getFavorites.rejected]: handleRejected,
+
+		[deleteRecipe.pending]: handlePending,
 		[deleteRecipe.fulfilled](state, action) {
 			const recipeId = action.payload.data._id;
 			state.myRecipes = state.myRecipes.filter((el) => el._id !== recipeId);
+			state.isLoading = false;
+			state.error = null;
 		},
+		[deleteRecipe.rejected]: handleRejected,
 
+		[addToFavorites.pending]: handlePending,
 		[addToFavorites.fulfilled](state, action) {
 			state.favoriteRecipes.push(action.payload);
+			state.isLoading = false;
+			state.error = null;
 		},
-		[deleteFromFavorites.fulfilled](state, action) {
-			const recipeId = action.payload.id;
-			state.favoriteRecipes = state.favoriteRecipes.filter(
-				(el) => el.id !== recipeId
-			);
-		},
+		[addToFavorites.rejected]: handleRejected,
 
-		// [addRecipe.rejected]: handleRejected,
+		[deleteFromFavorites.pending]: handlePending,
+		[deleteFromFavorites.fulfilled](state, action) {
+			const recipeId = action.payload.data._id;
+			state.favoriteRecipes = state.favoriteRecipes.filter(
+				(el) => el._id !== recipeId
+			);
+			state.isLoading = false;
+			state.error = null;
+		},
+		[deleteFromFavorites.rejected]: handleRejected,
 	},
 });
 export const { searchRecipe } = recipesSlice.actions;

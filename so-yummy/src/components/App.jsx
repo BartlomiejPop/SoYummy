@@ -1,11 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 import React, { lazy, useEffect } from "react";
 import { useAuth } from "../hooks/useAuth.js";
+import { useLoading } from "../hooks/useLoading.js";
 import { Layout } from "./Layout";
 import { PrivateRoute } from "./PrivateRoute.js";
 import { RestrictedRoute } from "./RestrictedRoute.js";
 import { refreshUser } from "../redux/auth/operations";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
+import { selectIsLoading } from "../redux/recipes/selectors.js";
 
 const WelcomePage = lazy(() => import("../pages/WelcomePage"));
 const RegisterPage = lazy(() => import("../pages/Register"));
@@ -19,6 +22,7 @@ const FavoritesPage = lazy(() => import("../pages/FavoritesPage.js"));
 const SearchPage = lazy(() => import("../pages/SearchPage.js"));
 
 export const App = () => {
+	const { isLoading } = useLoading();
 	const { isRefreshing } = useAuth();
 
 	return isRefreshing ? (

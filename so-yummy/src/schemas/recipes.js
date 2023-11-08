@@ -5,7 +5,7 @@ const recipeSchema = new Schema({
 	user: {
 		type: Schema.Types.ObjectId,
 	},
-	image: { src: String },
+	img: { type: String },
 	title: {
 		type: String,
 		required: [true, "Set title for recipe"],

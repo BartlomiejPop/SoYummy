@@ -5,7 +5,8 @@ import logger from "morgan";
 import authRouter from "./routes/api/auth.js";
 import recipesRouter from "./routes/api/recipes.js";
 import emailRouter from "./routes/api/sendEmail.js";
-// import multer from "multer";
+import bodyParser from "body-parser";
+import multer from "multer";
 import path from "path";
 import { promises as fsPromises } from "fs";
 import dotenv from "dotenv";
@@ -37,6 +38,8 @@ app.use(express.json());
 app.use("/", authRouter);
 app.use("/", recipesRouter);
 app.use("/", emailRouter);
+app.use(bodyParser.json({ limit: "50mb" }));
+app.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 
 app.use((_, res, next) => {
 	const err = new Error("Not Found");
@@ -57,8 +60,8 @@ try {
 	console.log("Database connection successful");
 
 	app.listen(port, () => {
-		// createFolderIsNotExist(uploadDir);
-		// createFolderIsNotExist("src/uploads");
+		createFolderIsNotExist(uploadDir);
+		createFolderIsNotExist("src/uploads");
 		console.log(`Server running. Use our API on port: ${port}`);
 	});
 } catch (error) {

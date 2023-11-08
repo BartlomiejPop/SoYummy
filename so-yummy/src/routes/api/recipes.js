@@ -16,16 +16,13 @@ const storage = multer.diskStorage({
 	filename: function (req, file, cb) {
 		cb(null, file.originalname);
 	},
-	limits: {
-		fileSize: 1048576,
-	},
 });
 
 const upload = multer({ storage: storage });
 
 router.post(
 	"/addImage",
-	upload.single("image"),
+	upload.single("file"),
 	ctrlAuth.auth,
 	ctrRecipes.addImage
 );

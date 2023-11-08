@@ -14,7 +14,7 @@ export const SearchedRecipes = () => {
 				{recipes.map((el, index) => (
 					<li className="HomeRecipesListItem" key={index}>
 						<img
-							src={el.picture || placeholder}
+							src={el.picture || el.img || placeholder}
 							alt={`Recipe ${index + 1}`}
 							onClick={() => {
 								navigate(`/recipe/${el.title}`);

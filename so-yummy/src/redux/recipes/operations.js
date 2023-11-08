@@ -95,22 +95,16 @@ export const deleteRecipe = createAsyncThunk(
 	}
 );
 
-export const addImage = createAsyncThunk(
-	"addImage",
-	async (image, thunkAPI) => {
-		const state = thunkAPI.getState();
-		try {
-			setAuthToken(state.auth.token);
-			const response = await axios.post(
-				`http://localhost:3000/addImage`,
-				image
-			);
-			return response.data;
-		} catch (e) {
-			return thunkAPI.rejectWithValue(e.message);
-		}
+export const addImage = createAsyncThunk("addImage", async (file, thunkAPI) => {
+	const state = thunkAPI.getState();
+	try {
+		setAuthToken(state.auth.token);
+		const response = await axios.post(`http://localhost:3000/addImage`, file);
+		return response.data;
+	} catch (e) {
+		return thunkAPI.rejectWithValue(e.message);
 	}
-);
+});
 
 export const getRecipe = (title) => (dispatch, getState) => {
 	const state = getState();

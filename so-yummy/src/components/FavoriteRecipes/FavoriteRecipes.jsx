@@ -16,12 +16,14 @@ import { deleteRecipe } from "../../redux/recipes/operations.js";
 import { deleteFromFavorites } from "../../redux/recipes/operations.js";
 import { getMyRecipes } from "../../redux/recipes/operations.js";
 import img from "../../images/ownRecipeImg.jpg";
+import { selectIsLoading } from "../../redux/recipes/selectors";
+import Loader from "../Loader/Loader.jsx";
 
 export const MyRecipes = () => {
 	const dispatch = useDispatch();
 	const navigate = useNavigate();
 	const recipes = useSelector(selectFavorites);
-	// dispatch(getMyRecipes);
+	const isLoading = useSelector(selectIsLoading);
 	useEffect(() => {
 		dispatch(getFavorites());
 	}, [dispatch]);
@@ -33,13 +35,14 @@ export const MyRecipes = () => {
 
 	return (
 		<div>
+			{isLoading && <Loader />}
 			<h1 className="myRecipesTitle">Favorites</h1>
 			<ul className="myRecipesList">
 				{recipes.map((el, index) => (
 					<li className="myRecipesItem" key={index}>
 						<img
 							className="myRecipesImage"
-							src={img}
+							src={el.img || el.picture || img}
 							alt={`Recipe ${index + 1}`}
 						/>
 						<div className="myRecipesContent">
